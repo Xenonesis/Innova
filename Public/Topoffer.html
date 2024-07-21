@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innova Ecommerce</title>
+    <link rel="stylesheet" href="Topoffer.css">
+    <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="mobile.html">Mobiles</a></li>
+                <li><a href="#fashion">Fashion</a></li>
+                <li><a href="#tvs-appliances">TVs & Appliances</a></li>
+                <li><a href="#electronics">Electronics</a></li>
+                <li><a href="#beauty">Beauty</a></li>
+                <li><a href="#gadgets">Smart Gadgets</a></li>
+                <li><a href="#home-kitchen">Home & Kitchen</a></li>
+                <li><a href="#beds-mattresses">Beds & Mattresses</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+        <img src="/logo.png" alt="Innova Logo" class="logo">
+    </header>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Search for products, brands and more">
+        <button>Search</button>
+    </div>
+
+    <div class="sort-filter">
+        <button onclick="sortProducts('price-asc')">Sort by Price: Low to High</button>
+        <button onclick="sortProducts('price-desc')">Sort by Price: High to Low</button>
+        <button onclick="sortProducts('name')">Sort by Name</button>
+        <select onchange="filterProducts(this.value)">
+            <option value="all">All Categories</option>
+            <option value="mobiles">Mobiles</option>
+            <option value="fashion">Fashion</option>
+            <option value="tvs-appliances">TVs & Appliances</option>
+            <option value="electronics">Electronics</option>
+            <option value="beauty">Beauty</option>
+            <option value="gadgets">Smart Gadgets</option>
+            <option value="home-kitchen">Home & Kitchen</option>
+            <option value="beds-mattresses">Beds & Mattresses</option>
+        </select>
+    </div>
+
+    <div id="product-container">
+        <section id="mobiles" class="product-category">
+            <h2>Top Offers on Mobiles</h2>
+            <div class="product-card product" data-price="500" data-name="Latest Smartphone" data-category="mobiles">
+                <img src="mobile1.jpg" alt="Mobile 1" class="product-image">
+                <p>Latest Smartphone</p>
+                <p>Price: $500</p>
+                <button class="add-to-cart" data-price="500" data-name="Latest Smartphone">Shop Now</button>
+                <div id="reviews-mobile1" class="reviews"></div>
+                <textarea id="review-input-mobile1" placeholder="Write a review"></textarea>
+                <button onclick="captureReview('mobile1')">Submit Review</button>
+            </div>
+            <div class="product-card product" data-price="700" data-name="High-Performance Mobile" data-category="mobiles">
+                <img src="mobile2.jpg" alt="Mobile 2" class="product-image">
+                <p>High-Performance Mobile</p>
+                <p>Price: $700</p>
+                <button class="add-to-cart" data-price="700" data-name="High-Performance Mobile">Shop Now</button>
+                <div id="reviews-mobile2" class="reviews"></div>
+                <textarea id="review-input-mobile2" placeholder="Write a review"></textarea>
+                <button onclick="captureReview('mobile2')">Submit Review</button>
+            </div>
+        </section>
+
+        <section id="fashion" class="product-category">
+            <h2>Exclusive Fashion Deals</h2> 
+            <div class="product-card product" data-price="50" data-name="Trendy Outfit" data-category="fashion">
+                <img src="fashion1.jpg" alt="Fashion 1">
+                <p>Trendy Outfit</p>
+                <p>Price: $50</p>
+                <button class="add-to-cart" data-price="50" data-name="Trendy Outfit">Shop Now</button>
+                <div id="reviews-fashion1" class="reviews"></div>
+                <textarea id="review-input-fashion1" placeholder="Write a review"></textarea>
+                <button onclick="captureReview('fashion1')">Submit Review</button>
+            </div>
+            <div class="product-card product" data-price="70" data-name="Stylish Apparel" data-category="fashion">
+                <img src="fashion2.jpg" alt="Fashion 2">
+                <p>Stylish Apparel</p>
+                <p>Price: $70</p>
+                <button class="add-to-cart" data-price="70" data-name="Stylish Apparel">Shop Now</button>
+                <div id="reviews-fashion2" class="reviews"></div>
+                <textarea id="review-input-fashion2" placeholder="Write a review"></textarea>
+                <button onclick="captureReview('fashion2')">Submit Review</button>
+            </div>
+        </section>
+
+        <section id="tvs-appliances" class="product-category">
+            <h2>Best Deals on TVs & Appliances</h2>
+            <div class="product-card product" data-price="1000" data-name="Smart TV" data-category="tvs-appliances">
+                <img src="tv1.jpg" alt="TV 1">
+                <p>Smart TV</p>
+                <p>Price: $1000</p>
+                <button class="add-to-cart" data-price="1000" data-name="Smart TV">Shop Now</button>
+                <div id="reviews-tv1" class="reviews"></div>
+                <textarea id="review-input-tv1" placeholder="Write a review"></textarea>
+                <button onclick="captureReview('tv1')">Submit Review</button>
+            </div>
+            <div class="product-card product" data-price="150" data-name="Home Appliance" data-category="tvs-appliances">
+                <img src="appliance1.jpg" alt="Appliance 1">
+                <p>Home Appliance</p>
+                <p>Price: $150</p>
+                <button class="add-to-cart" data-price="150" data-name="Home Appliance">Shop Now</button>
+                <div id="reviews-appliance1" class="reviews"></div>
+                <textarea id="review-input-appliance1" placeholder="Write a review"></textarea>
+                <button onclick="captureReview('appliance1')">Submit Review</button>
+            </div>
+        </section>
+
+        <section id="electronics" class="product-category">
+            <h2>Top Electronics Offers</h2>
+            <div class="product-card product" data-price="300" data-name="Latest Gadget" data-category="electronics">
+                <img src="electronics1.jpg" alt="Electronics 1">
+                <p>Latest Gadget</p>
+                <p>Price: $300</p>
+                <button class="add-to-cart" data-price="300" data-name="Latest Gadget">Shop Now</button>
+                <div id="reviews-electronics1" class="reviews"></div>
+                <textarea id="review-input-electronics1" placeholder="Write a review"></textarea>
+                <button onclick="captureReview('electronics1')">Submit Review</button>
+            </div>
+            <div class="product-card product" data-price="450" data-name="High-Tech Device" data-category="electronics">
+                <img src="electronics2.jpg" alt="Electronics 2">
+                <p>High-Tech Device</p>
+                <p>Price: $450</p>
+                <button class="add-to-cart" data-price="450" data-name="High-Tech Device">Shop Now</button>
+                <div id="reviews-electronics2" class="reviews"></div>
+                <textarea id="review-input-electronics2" placeholder="Write a review"></textarea>
+                <button onclick="captureReview('electronics2')">Submit Review</button>
+            </div>
+        </section>
+
+        <section id="beauty" class="product-category">
+            <h2>Beauty Products Sale</h2>
+            <div class="product-card product" data-price="25" data-name="Skincare Essentials" data-category="beauty">
+                <img src="beauty1.jpg" alt="Beauty 1">
+                <p>Skincare Essentials</p>
+                <p>Price: $25</p>
+                <button class="add-to-cart" data-price="25" data-name="Skincare Essentials">Shop Now</button>
+                <div id="reviews-beauty1" class="reviews"></div>
+                <textarea id="review-input-beauty1" placeholder="Write a review"></textarea>
+                <button onclick="captureReview('beauty1')">Submit Review</button>
+            </div>
+            <div class="product-card product" data-price="35" data-name="Makeup Kit" data-category="beauty">
+                <img src="beauty2.jpg" alt="Beauty 2">
+                <p>Makeup Kit</p>
+                <p>Price: $35</p>
+                <button class="add-to-cart" data-price="35" data-name="Makeup Kit">Shop Now</button>
+                <div id="reviews-beauty2" class="reviews"></div>
+                <textarea id="review-input-beauty2" placeholder="Write a review"></textarea>
+                <button onclick="captureReview('beauty2')">Submit Review</button>
+            </div>
+        </section>
+
+        <section id="gadgets" class="product-category">
+            <h2>Smart Gadgets Offers</h2>
+            <div class="product-card product" data-price="100" data-name="Smartwatch" data-category="gadgets">
+                <img src="gadget1.jpg" alt="Gadget 1">
+                <p>Smartwatch</p>
+                <p>Price: $100</p>
+                <button class="add-to-cart" data-price="100" data-name="Smartwatch">Shop Now</button>
+                <div id="reviews-gadget1" class="reviews"></div>
+                <textarea id="review-input-gadget1" placeholder="Write a review"></textarea>
+                <button onclick="captureReview('gadget1')">Submit Review</button>
+            </div>
+            <div class="product-card product" data-price="80" data-name="Fitness Tracker" data-category="gadgets">
+                <img src="gadget2.jpg" alt="Gadget 2">
+                <p>Fitness Tracker</p>
+                <p>Price: $80</p>
+                <button class="add-to-cart" data-price="80" data-name="Fitness Tracker">Shop Now</button>
+                <div id="reviews-gadget2" class="reviews"></div>
+                <textarea id="review-input-gadget2" placeholder="Write a review"></textarea>
+                <button onclick="captureReview('gadget2')">Submit Review</button>
+            </div>
+        </section>
+
+        <section id="home-kitchen" class="product-category">
+            <h2>Home & Kitchen Deals</h2>
+            <div class="product-card product" data-price="200" data-name="Kitchen Appliance" data-category="home-kitchen">
+                <img src="home1.jpg" alt="Home 1">
+                <p>Kitchen Appliance</p>
+                <p>Price: $200</p>
+                <button class="add-to-cart" data-price="200" data-name="Kitchen Appliance">Shop Now</button>
+                <div id="reviews-home1" class="reviews"></div>
+                <textarea id="review-input-home1" placeholder="Write a review"></textarea>
+                <button onclick="captureReview('home1')">Submit Review</button>
+            </div>
+            <div class="product-card product" data-price="120" data-name="Home Decor" data-category="home-kitchen">
+                <img src="home2.jpg" alt="Home 2">
+                <p>Home Decor</p>
+                <p>Price: $120</p>
+                <button class="add-to-cart" data-price="120" data-name="Home Decor">Shop Now</button>
+                <div id="reviews-home2" class="reviews"></div>
+                <textarea id="review-input-home2" placeholder="Write a review"></textarea>
+                <button onclick="captureReview('home2')">Submit Review</button>
+            </div>
+        </section>
+
+        <section id="beds-mattresses" class="product-category">
+            <h2>Beds & Mattresses Sale</h2>
+            <div class="product-card product" data-price="500" data-name="Comfortable Mattress" data-category="beds-mattresses">
+                <img src="bed1.jpg" alt="Bed 1">
+                <p>Comfortable Mattress</p>
+                <p>Price: $500</p>
+                <button class="add-to-cart" data-price="500" data-name="Comfortable Mattress">Shop Now</button>
+                <div id="reviews-bed1" class="reviews"></div>
+                <textarea id="review-input-bed1" placeholder="Write a review"></textarea>
+                <button onclick="captureReview('bed1')">Submit Review</button>
+            </div>
+            <div class="product-card product" data-price="700" data-name="Luxury Bed" data-category="beds-mattresses">
+                <img src="bed2.jpg" alt="Bed 2">
+                <p>Luxury Bed</p>
+                <p>Price: $700</p>
+                <button class="add-to-cart" data-price="700" data-name="Luxury Bed">Shop Now</button>
+                <div id="reviews-bed2" class="reviews"></div>
+                <textarea id="review-input-bed2" placeholder="Write a review"></textarea>
+                <button onclick="captureReview('bed2')">Submit Review</button>
+            </div>
+        </section>
+    </div>
+
+    <section id="cart" class="cart-section">
+        <h2>Your Cart</h2>
+        <div id="cart-items">
+            <p>No items in cart</p>
+            <a href="cart.html">Go to Cart</a>
+        </div>
+        <button id="checkout-button">Checkout</button>
+    </section>
+
+    <footer>
+        <ul>
+            <li><a href="#">Policies</a></li>
+            <li><a href="#">Returns Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Security</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Infringements</a></li>
+        </ul>
+        <img src="logo.png" alt="Innova Logo" style="height: 30px;">
+        <p>© 2024 Innova. All Rights Reserved.</p>
+        <p>Need help? Visit the Help Center or Contact Us</p>
+        <div class="social-media">
+            <div class="social-media-body">
+                <a href="https://www.linkedin.com/in/itisaddy/" target="_blank"><img src="https://img.icons8.com/color/100/000000/linkedin.png" alt="LinkedIn"></a>
+                <a href="https://www.instagram.com/i__aditya7/?utm_source=ig_web_button_share_sheet" target="_blank"><img src="https://img.icons8.com/?size=100&id=32320&format=png&color=000000" alt="Instagram"></a>
+                <a href="https://github.com/Xenonesis" target="_blank"><img src="https://img.icons8.com/?size=100&id=12599&format=png&color=000000" alt="GitHub"></a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="popup" class="popup">
+        <p>Your item is added to cart</p>
+    </div>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="Topoffer.js"></script>
+</body>
+</html>

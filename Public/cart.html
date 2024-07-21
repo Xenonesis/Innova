@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innova Ecommerce</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e5e5e5;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #333;
+            color: #e5e5e5;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #e5e5e5;
+            text-decoration: none;
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .search-bar input {
+            width: 60%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            background-color: #333;
+            color: #e5e5e5;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .main-content {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .main-content h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .main-content p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .main-content button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #ff6600;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cart {
+            margin: 20px;
+        }
+
+        .cart table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .cart table, .cart th, .cart td {
+            border: 1px solid #ddd;
+        }
+
+        .cart th, .cart td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .cart th {
+            background-color: #f4f4f4;
+        }
+
+        .cart td {
+            text-align: center;
+        }
+
+        .checkout-button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #ff6600;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #e5e5e5;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .footer ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .footer ul li {
+            margin: 0 15px;
+        }
+
+        .footer ul li a {
+            color: #e5e5e5;
+            text-decoration: none;
+        }
+
+        .social-media a {
+            margin: 0 10px;
+        }
+
+        .social-media img {
+            height: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content h1 {
+                font-size: 2em;
+            }
+
+            .main-content p {
+                font-size: 1em;
+            }
+
+            .main-content button {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="Topoffer.html">Topoffer</a></li>
+                <li><a href="aboutus.html">Contact</a></li>
+            </ul>
+        </nav>
+        <img src="logo.png" alt="Innova Logo" class="logo">
+    </header>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Search for products, brands and more">
+        <button>Search</button>
+    </div>
+
+    <section class="main-content">
+        <h1>Your Cart</h1>
+        <div class="cart">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sample Product</td>
+                        <td>₹500</td>
+                        <td>1</td>
+                        <td>₹500</td>
+                    </tr>
+                    <!-- Add more product rows as needed -->
+                </tbody>
+            </table>
+            <p><strong>Total Amount: ₹500</strong></p>
+            <button class="checkout-button" id="checkout-button">Checkout</button>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <ul>
+            <li><a href="#">Policies</a></li>
+            <li><a href="#">Returns Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Security</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Infringements</a></li>
+        </ul>
+        <p>© 2007-2024 Innova.com</p>
+        <p>Need help? Visit the Help Center or Contact Us</p>
+        <div class="social-media">
+            <div class="social-media-body">
+                <a href="https://www.linkedin.com/in/itisaddy/" target="_blank"><img src="https://img.icons8.com/color/100/000000/linkedin.png" alt="linkedin"></a>
+                <a href="https://www.instagram.com/i__aditya7/?utm_source=ig_web_button_share_sheet" target="_blank"><img src="https://img.icons8.com/?size=100&id=32320&format=png&color=000000" alt="instagram"></a>
+                <a href="https://github.com/Xenonesis" target="_blank"><img src="https://img.icons8.com/?size=100&id=12599&format=png&color=000000" alt="github"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('checkout-button').addEventListener('click', function() {
+            var options = {
+                "key": "YOUR_RAZORPAY_KEY_ID", // Enter the Key ID generated from the Dashboard
+                "amount": 50000, // Amount in paise (₹500)
+                "currency": "INR",
+                "name": "Innova Ecommerce",
+                "description": "Test Transaction",
+                "handler": function (response) {
+                    alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
+                    // You can add further actions here, e.g., redirecting to a success page
+                },
+                "prefill": {
+                    "name": "John Doe",
+                    "email": "johndoe@example.com",
+                    "contact": "9999999999"
+                },
+                "theme": {
+                    "color": "#ff6600"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        });
+    </script>
+</body>
+</html>
