@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innova Ecommerce</title>
+    <title>Innova Ecommerce - Cart</title>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <style>
         * {
@@ -173,6 +173,31 @@
                 font-size: 0.9em;
             }
         }
+
+        .cart-popup {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            width: 300px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        .cart-popup.visible {
+            display: block;
+        }
+
+        .cart-popup h3 {
+            margin-bottom: 15px;
+        }
+
+        .cart-popup p {
+            margin: 5px 0;
+        }
     </style>
 </head>
 <body>
@@ -180,7 +205,7 @@
         <nav>
             <ul>
                 <li><a href="home.html">Home</a></li>
-                <li><a href="Topoffer.html">Topoffer</a></li>
+                <li><a href="Topoffer.html">Top Offers</a></li>
                 <li><a href="aboutus.html">Contact</a></li>
             </ul>
         </nav>
@@ -195,7 +220,7 @@
     <section class="main-content">
         <h1>Your Cart</h1>
         <div class="cart">
-            <table>
+            <table id="cart-items-table">
                 <thead>
                     <tr>
                         <th>Product</th>
@@ -205,16 +230,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Sample Product</td>
-                        <td>₹500</td>
-                        <td>1</td>
-                        <td>₹500</td>
-                    </tr>
-                    <!-- Add more product rows as needed -->
+                    <!-- Cart items will be dynamically inserted here -->
                 </tbody>
             </table>
-            <p><strong>Total Amount: ₹500</strong></p>
+            <p><strong>Total Amount: ₹<span id="total-amount">0</span></strong></p>
             <button class="checkout-button" id="checkout-button">Checkout</button>
         </div>
     </section>
@@ -231,37 +250,60 @@
         <p>© 2007-2024 Innova.com</p>
         <p>Need help? Visit the Help Center or Contact Us</p>
         <div class="social-media">
-            <div class="social-media-body">
-                <a href="https://www.linkedin.com/in/itisaddy/" target="_blank"><img src="https://img.icons8.com/color/100/000000/linkedin.png" alt="linkedin"></a>
-                <a href="https://www.instagram.com/i__aditya7/?utm_source=ig_web_button_share_sheet" target="_blank"><img src="https://img.icons8.com/?size=100&id=32320&format=png&color=000000" alt="instagram"></a>
-                <a href="https://github.com/Xenonesis" target="_blank"><img src="https://img.icons8.com/?size=100&id=12599&format=png&color=000000" alt="github"></a>
-            </div>
+            <a href="https://facebook.com" target="_blank"><img src="facebook-icon.png" alt="Facebook"></a>
+            <a href="https://twitter.com" target="_blank"><img src="twitter-icon.png" alt="Twitter"></a>
+            <a href="https://instagram.com" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a>
         </div>
     </footer>
 
     <script>
-        document.getElementById('checkout-button').addEventListener('click', function() {
-            var options = {
-                "key": "YOUR_RAZORPAY_KEY_ID", // Enter the Key ID generated from the Dashboard
-                "amount": 50000, // Amount in paise (₹500)
-                "currency": "INR",
-                "name": "Innova Ecommerce",
-                "description": "Test Transaction",
-                "handler": function (response) {
-                    alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
-                    // You can add further actions here, e.g., redirecting to a success page
-                },
-                "prefill": {
-                    "name": "John Doe",
-                    "email": "johndoe@example.com",
-                    "contact": "9999999999"
-                },
-                "theme": {
-                    "color": "#ff6600"
-                }
-            };
-            var rzp1 = new Razorpay(options);
-            rzp1.open();
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const cartItemsTableBody = document.querySelector('#cart-items-table tbody');
+            const totalAmountElement = document.getElementById('total-amount');
+            let totalAmount = 0;
+
+            // Clear previous rows
+            cartItemsTableBody.innerHTML = '';
+
+            cartItems.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>₹${item.price}</td>
+                    <td>${item.quantity}</td>
+                    <td>₹${item.price * item.quantity}</td>
+                `;
+                cartItemsTableBody.appendChild(row);
+                totalAmount += item.price * item.quantity;
+            });
+
+            totalAmountElement.textContent = totalAmount;
+
+            document.getElementById('checkout-button').addEventListener('click', function() {
+                var options = {
+                    "key": "YOUR_RAZORPAY_KEY_ID", // Enter the Key ID generated from the Dashboard
+                    "amount": totalAmount * 100, // Amount in paise
+                    "currency": "INR",
+                    "name": "Innova Ecommerce",
+                    "description": "Test Transaction",
+                    "handler": function (response) {
+                        alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
+                        localStorage.removeItem('cartItems'); // Clear cart on successful payment
+                        location.reload(); // Reload page to clear cart display
+                    },
+                    "prefill": {
+                        "name": "John Doe",
+                        "email": "johndoe@example.com",
+                        "contact": "9999999999"
+                    },
+                    "theme": {
+                        "color": "#ff6600"
+                    }
+                };
+                var rzp1 = new Razorpay(options);
+                rzp1.open();
+            });
         });
     </script>
 </body>

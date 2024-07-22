@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innova</title>
+    <style>
+        #logo {
+          height: 50px; /* Adjust the height as needed */
+          width: auto;
+          display: block;
+        }
+        header ul {
+          display: flex;
+          list-style-type: none;
+          padding: 0;
+        }
+        header li {
+          margin-right: 20px; /* Adjust spacing as needed */
+        }
+        header li a {
+          text-decoration: none;
+          color: #000; /* Adjust color as needed */
+     }
+
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2e9e4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #2874f0;
+            padding: 1rem;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        header ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+        }
+        header ul li {
+            display: inline;
+        }
+        header ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        nav {
+            background-color: white;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        nav .logo img {
+            height: 50px;
+        }
+        nav .filters, nav .sort {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        nav button, nav select {
+            padding: 0.5rem;
+            border: none;
+            background-color: #2874f0;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        nav button:hover, nav select:hover {
+            background-color: #0056b3;
+        }
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .product-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 1rem;
+            width: calc(25% - 2rem);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .product-card img {
+            width: 100%;
+            height: auto;
+        }
+        .product-card p {
+            margin: 0;
+            padding: 0.5rem 1rem;
+        }
+        .product-card .price {
+            font-size: 1.2rem;
+            color: #2874f0;
+        }
+        .product-card button {
+            width: calc(100% - 2rem);
+            margin: 1rem;
+            padding: 0.5rem;
+            border: none;
+            background-color: #2874f0;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .product-card button:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            background-color: #f2e9e4;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+        }
+        .footer img {
+            height: 30px;
+        }
+        .footer .social-media-body {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .footer p {
+            margin: 0;
+        }
+        #cart-popup {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem;
+            width: 300px;
+            z-index: 1000;
+        }
+        #cart-popup.show {
+            display: block;
+        }
+        #cart-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #cart-items li {
+            border-bottom: 1px solid #ddd;
+            padding: 0.5rem 0;
+        }
+        .cart-popup-footer {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 0.5rem;
+            border-top: 1px solid #ddd;
+        }
+        .cart-popup-footer span {
+            font-weight: bold;
+        }
+        #item-popup {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #2874f0;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        #item-popup.show {
+            display: block;
+        }
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            margin: 0.5rem 0;
+        }
+        .star-rating input {
+            display: none;
+        }
+        .star-rating label {
+            color: #FFD700;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .star-rating input:checked ~ label {
+            color: #FFD700;
+        }
+        .star-rating input:not(:checked) ~ label:hover {
+            color: #FFC107;
+        }
+        .checkout-button {
+            background-color: #2874f0;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .checkout-button:hover {
+            background-color: #0056b3;
+        }
+        #cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <ul>
+            <li>
+                <a href="/home.html">
+                    <img src="logo.png" alt="Logo" id="logo" />
+                </a>
+            </li>
+            <li><a href="/Login page/index.html" target="_blank">Login</a></li>
+            <li><a href="Topoffer.html" target="_blank">Shop</a></li>
+            <li><a href="aboutus.html" target="_blank">About Us</a></li>
+            <li><a href="#" target="_blank">Contact</a></li>
+            <li id="cart-icon">
+                <a id="cart" href="Cart.html" target="_blank">
+                    Cart (<span id="cart-count">0</span>)
+                </a>
+            </li>
+        </ul>
+    </header>
+    
+    <nav>
+        
+        <div class="filters">
+            <button onclick="filterProducts('all')">All Products</button>
+            <button onclick="filterProducts('beauty')">Beauty</button>
+            <button onclick="filterProducts('gadgets')">Smart Gadgets</button>
+            <button onclick="filterProducts('home-kitchen')">Home & Kitchen</button>
+            <button onclick="filterProducts('beds-mattresses')">Beds & Mattresses</button>
+            <button onclick="filterProducts('tvs-appliances')">TVs & Appliances</button>
+            <button onclick="filterProducts('electronics')">Electronics</button>
+        </div>
+        <div class="sort">
+            <label for="sort">Sort By:</label>
+            <select id="sort" onchange="sortProducts(this.value)">
+                <option value="">Select</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="name">Name</option>
+            </select>
+        </div>
+    </nav>
+    <div class="product-container" id="product-container">
+        <!-- TVs & Appliances -->
+        <section id="tvs-appliances" class="product-category">
+            <h2>Best Deals on TVs & Appliances</h2>
+            <div class="product-card" data-price="500" data-name="Smart TV" data-category="tvs-appliances">
+                <img src="tv1.png" alt="TV 1">
+                <p>Smart TV</p>
+                <p class="price">Price: $500</p>
+                <button class="add-to-cart" data-price="500" data-name="Smart TV">Add to Cart</button>
+            </div>
+            <div class="product-card" data-price="150" data-name="Home Appliance" data-category="tvs-appliances">
+                <img src="HA.jpg" alt="Appliance 1">
+                <p>Home Appliance</p>
+                <p class="price">Price: $150</p>
+                <button class="add-to-cart" data-price="150" data-name="Home Appliance">Add to Cart</button>
+            </div>
+        </section>
+
+        <!-- Electronics -->
+        <section id="electronics" class="product-category">
+            <h2>Top Electronics Offers</h2>
+            <div class="product-card" data-price="200" data-name="Latest Gadget" data-category="electronics">
+                <img src="i15.jpg" alt="Electronics 1">
+                <p>Latest Gadget</p>
+                <p class="price">Price: $200</p>
+                <button class="add-to-cart" data-price="200" data-name="Latest Gadget">Add to Cart</button>
+            </div>
+            <div class="product-card" data-price="350" data-name="High-Tech Device" data-category="electronics">
+                <img src="HP.jpeg" alt="Electronics 2">
+                <p>High-Tech Device</p>
+                <p class="price">Price: $350</p>
+                <button class="add-to-cart" data-price="350" data-name="High-Tech Device">Add to Cart</button>
+            </div>
+        </section>
+
+        <!-- Beauty Products -->
+        <section id="beauty" class="product-category">
+            <h2>Beauty Products Sale</h2>
+            <div class="product-card" data-price="25" data-name="Skincare Essentials" data-category="beauty">
+                <img src="beauty1.jpg" alt="Beauty 1">
+                <p>Skincare Essentials</p>
+                <p class="price">Price: $25</p>
+                <button class="add-to-cart" data-price="25" data-name="Skincare Essentials">Add to Cart</button>
+                <div class="reviews">
+                    <div class="star-rating">
+                        <input type="radio" id="star5-beauty1" name="rating-beauty1" value="5"><label for="star5-beauty1">★</label>
+                        <input type="radio" id="star4-beauty1" name="rating-beauty1" value="4"><label for="star4-beauty1">★</label>
+                        <input type="radio" id="star3-beauty1" name="rating-beauty1" value="3"><label for="star3-beauty1">★</label>
+                        <input type="radio" id="star2-beauty1" name="rating-beauty1" value="2"><label for="star2-beauty1">★</label>
+                        <input type="radio" id="star1-beauty1" name="rating-beauty1" value="1"><label for="star1-beauty1">★</label>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card" data-price="30" data-name="Makeup Kit" data-category="beauty">
+                <img src="beauty2.jpg" alt="Beauty 2">
+                <p>Makeup Kit</p>
+                <p class="price">Price: $30</p>
+                <button class="add-to-cart" data-price="30" data-name="Makeup Kit">Add to Cart</button>
+                <div class="reviews">
+                    <div class="star-rating">
+                        <input type="radio" id="star5-beauty2" name="rating-beauty2" value="5"><label for="star5-beauty2">★</label>
+                        <input type="radio" id="star4-beauty2" name="rating-beauty2" value="4"><label for="star4-beauty2">★</label>
+                        <input type="radio" id="star3-beauty2" name="rating-beauty2" value="3"><label for="star3-beauty2">★</label>
+                        <input type="radio" id="star2-beauty2" name="rating-beauty2" value="2"><label for="star2-beauty2">★</label>
+                        <input type="radio" id="star1-beauty2" name="rating-beauty2" value="1"><label for="star1-beauty2">★</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Smart Gadgets -->
+        <section id="gadgets" class="product-category">
+            <h2>Smart Gadgets Offers</h2>
+            <div class="product-card" data-price="150" data-name="Smartwatch" data-category="gadgets">
+                <img src="gadget1.jpg" alt="Gadget 1">
+                <p>Smartwatch</p>
+                <p class="price">Price: $150</p>
+                <button class="add-to-cart" data-price="150" data-name="Smartwatch">Add to Cart</button>
+            </div>
+            <div class="product-card" data-price="80" data-name="Fitness Tracker" data-category="gadgets">
+                <img src="gadget2.jpg" alt="Gadget 2">
+                <p>Fitness Tracker</p>
+                <p class="price">Price: $80</p>
+                <button class="add-to-cart" data-price="80" data-name="Fitness Tracker">Add to Cart</button>
+            </div>
+        </section>
+
+        <!-- Home & Kitchen -->
+        <section id="home-kitchen" class="product-category">
+            <h2>Home & Kitchen Deals</h2>
+            <div class="product-card" data-price="100" data-name="Kitchen Appliance" data-category="home-kitchen">
+                <img src="home1.jpg" alt="Home 1">
+                <p>Kitchen Appliance</p>
+                <p class="price">Price: $100</p>
+                <button class="add-to-cart" data-price="100" data-name="Kitchen Appliance">Add to Cart</button>
+            </div>
+            <div class="product-card" data-price="60" data-name="Home Decor" data-category="home-kitchen">
+                <img src="home2.jpg" alt="Home 2">
+                <p>Home Decor</p>
+                <p class="price">Price: $60</p>
+                <button class="add-to-cart" data-price="60" data-name="Home Decor">Add to Cart</button>
+            </div>
+        </section>
+
+        <!-- Beds & Mattresses -->
+        <section id="beds-mattresses" class="product-category">
+            <h2>Beds & Mattresses Sale</h2>
+            <div class="product-card" data-price="200" data-name="Comfortable Mattress" data-category="beds-mattresses">
+                <img src="bed1.jpg" alt="Bed 1">
+                <p>Comfortable Mattress</p>
+                <p class="price">Price: $200</p>
+                <button class="add-to-cart" data-price="200" data-name="Comfortable Mattress">Add to Cart</button>
+            </div>
+            <div class="product-card" data-price="400" data-name="Luxury Bed" data-category="beds-mattresses">
+                <img src="bed2.jpg" alt="Bed 2">
+                <p>Luxury Bed</p>
+                <p class="price">Price: $400</p>
+                <button class="add-to-cart" data-price="400" data-name="Luxury Bed">Add to Cart</button>
+            </div>
+        </section>
+    </div>
+    <div id="cart-popup">
+        <h3>Shopping Cart</h3>
+        <ul id="cart-items"></ul>
+        <div class="cart-popup-footer">
+            <span>Total:</span>
+            <span id="cart-total">0</span>
+        </div>
+        <button class="checkout-button" id="checkout-button">Checkout</button>
+    </div>
+    <div id="item-popup"></div>
+    <footer class="footer">
+        <p>&copy; 2024 Innova. All rights reserved.</p>
+        <div class="social-media-body">
+            <a href="https://facebook.com" target="_blank"><img src="facebook-icon.png" alt="Facebook"></a>
+            <a href="https://twitter.com" target="_blank"><img src="twitter-icon.png" alt="Twitter"></a>
+            <a href="https://instagram.com" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a>
+        </div>
+    </footer>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        let cart = [];
+        let cartTimeout;
+
+        function filterProducts(category) {
+            document.querySelectorAll('.product-card').forEach(product => {
+                if (category === 'all' || product.getAttribute('data-category') === category) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+
+        function sortProducts(order) {
+            const products = Array.from(document.querySelectorAll('.product-card'));
+            products.sort((a, b) => {
+                const priceA = parseFloat(a.getAttribute('data-price'));
+                const priceB = parseFloat(b.getAttribute('data-price'));
+                if (order === 'price-asc') {
+                    return priceA - priceB;
+                } else if (order === 'price-desc') {
+                    return priceB - priceA;
+                } else if (order === 'name') {
+                    return a.getAttribute('data-name').localeCompare(b.getAttribute('data-name'));
+                }
+                return 0;
+            });
+            const container = document.getElementById('product-container');
+            products.forEach(product => container.appendChild(product));
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+            let totalAmount = 0;
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} x ${item.quantity} - $${item.price * item.quantity}`;
+                cartItems.appendChild(li);
+                totalAmount += item.price * item.quantity;
+            });
+            document.getElementById('cart-total').textContent = `$${totalAmount}`;
+            document.getElementById('cart-count').textContent = cart.length;
+        }
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const name = this.getAttribute('data-name');
+                const price = parseFloat(this.getAttribute('data-price'));
+                const existingItem = cart.find(item => item.name === name);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({ name, price, quantity: 1 });
+                }
+                updateCart();
+                const itemPopup = document.getElementById('item-popup');
+                itemPopup.textContent = `${name} added to cart`;
+                itemPopup.classList.add('show');
+                setTimeout(() => {
+                    itemPopup.classList.remove('show');
+                }, 2000);
+            });
+        });
+
+        const cartIcon = document.getElementById('cart-icon');
+        const cartPopup = document.getElementById('cart-popup');
+
+        cartIcon.addEventListener('mouseenter', function() {
+            cartPopup.classList.add('show');
+            clearTimeout(cartTimeout);
+        });
+
+        cartIcon.addEventListener('mouseleave', function() {
+            cartTimeout = setTimeout(() => {
+                cartPopup.classList.remove('show');
+            }, 10000); // Hide the popup after 10 seconds
+        });
+
+        cartPopup.addEventListener('mouseenter', function() {
+            clearTimeout(cartTimeout);
+        });
+
+        cartPopup.addEventListener('mouseleave', function() {
+            cartTimeout = setTimeout(() => {
+                cartPopup.classList.remove('show');
+            }, 10000); // Hide the popup after 10 seconds
+        });
+
+        document.getElementById('checkout-button').addEventListener('click', function() {
+            var options = {
+                "key": "YOUR_RAZORPAY_KEY_ID", // Replace with your Razorpay Key ID
+                "amount": parseFloat(document.getElementById('cart-total').textContent.replace('$', '')) * 100, // Amount in paise
+                "currency": "USD",
+                "name": "Innova",
+                "description": "Thank you for your purchase",
+                "handler": function (response) {
+                    alert('Payment successful');
+                },
+                "prefill": {
+                    "name": "Customer Name",
+                    "email": "customer@example.com",
+                    "contact": "9999999999"
+                },
+                "theme": {
+                    "color": "#2874f0"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        });
+    </script>
+</body>
+</html>
