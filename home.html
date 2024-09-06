@@ -169,78 +169,227 @@ header nav ul li a:hover {
     }
 }
     
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 100px 20px;
-            background-color: #f7ede2;
-            animation: fadeIn 1s ease-in-out;
-        }
-    
-        .hero h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            color: #333;
-            transition: color 0.3s ease;
-        }
-    
-        .hero p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-            color: #555;
-        }
-    
-        .cta-button {
-            padding: 10px 20px;
-            background-color: #333;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-    
-        .cta-button:hover {
-            background-color: #555;
-            transform: translateY(-5px);
-        }
-    
-        /* Categories Section */
-        .categories {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 20px;
-            animation: fadeInUp 1s ease-in-out;
-        }
-    
-        .category {
-            flex: 1 1 200px;
-            margin: 10px;
-            padding: 20px;
-            text-align: center;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-        }
-    
-        .category:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            background-color: #f1f1f1;
-        }
-    
-        .category i {
-            font-size: 2em;
-            margin-bottom: 10px;
-            color: #e74c3c;
-        }
-    
-        .category h2 {
-            margin-bottom: 10px;
-            font-size: 1.5em;
-            color: #333;
-        }
+       /* Hero Section */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    color: white;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-50%);
+    border-radius: 50%;
+    z-index: 0;
+    animation: pulse 5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translateX(-50%) scale(0.8);
+        opacity: 0.2;
+    }
+    50% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.1;
+    }
+    100% {
+        transform: translateX(-50%) scale(0.8);
+        opacity: 0.2;
+    }
+}
+
+.hero h1 {
+    font-size: 4em;
+    margin: 0;
+    font-weight: bold;
+    z-index: 1;
+    position: relative;
+}
+
+.hero p {
+    font-size: 1.4em;
+    margin: 10px 0;
+    z-index: 1;
+    position: relative;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    color: white;
+    background-color: #2874f0;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Categories Section */
+.categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.category {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.category:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.category a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.icon-container {
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    color: white;
+    padding: 20px;
+    border-radius: 50%;
+    margin: 20px auto;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.icon-container:hover {
+    background: linear-gradient(135deg, #feb47b, #ff7e5f);
+}
+
+.icon-container i {
+    font-size: 1.8em;
+}
+
+.category h2 {
+    font-size: 1.6em;
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+/* Freshers Section */
+.freshers {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.freshers h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.freshers .freshers-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* Popup Styles */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+    display: none;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.popup.active {
+    display: block;
+}
+
+.popup h3 {
+    margin-top: 0;
+}
+
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.popup-content {
+    margin-top: 20px;
+}
+
+.popup-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+}
+
+.popup-background.active {
+    display: block;
+}
+
     
         /* Video Section */
         .video-section {
@@ -579,62 +728,132 @@ p {
         </nav>
     </header>
 
-    <section class="hero">
-        <h1>Welcome to Innova</h1>
-        <p>Your one-stop shop for all your needs!</p>
-        <a href="Topoffer.html" class="cta-button">Shop Now</a>
-    </section>
+   <!-- Hero Section -->
+<section class="hero">
+    <h1>Welcome to Innova</h1>
+    <p>Your one-stop shop for all your needs!</p>
+    <a href="Topoffer.html" class="cta-button">Shop Now</a>
+</section>
 
-    <section class="categories">
-        <div class="category" data-item="Top Offer">
-            <a href="Topoffer.html">
+<!-- Categories Section -->
+<section class="categories">
+    <div class="category" data-item="Top Offer">
+        <a href="Topoffer.html">
+            <div class="icon-container">
                 <i class="fas fa-tags"></i>
-                <h2>Top Offer</h2>
-            </a>
-        </div>
-        <div class="category" data-item="Trendings">
-            <a href="trendings.html">
+            </div>
+            <h2>Top Offer</h2>
+        </a>
+    </div>
+    <div class="category" data-item="Trendings">
+        <a href="trendings.html">
+            <div class="icon-container">
                 <i class="fas fa-fire"></i>
-                <h2>Trendings</h2>
-            </a>
-        </div>
-        <div class="category" data-item="Electronics">
-            <a href="electronics.html">
+            </div>
+            <h2>Trendings</h2>
+        </a>
+    </div>
+    <div class="category" data-item="New Arrivals">
+        <a href="new-arrivals.html">
+            <div class="icon-container">
+                <i class="fas fa-star"></i>
+            </div>
+            <h2>New Arrivals</h2>
+        </a>
+    </div>
+    <div class="category" data-item="Electronics">
+        <a href="electronics.html">
+            <div class="icon-container">
                 <i class="fas fa-mobile-alt"></i>
-                <h2>Electronics</h2>
-            </a>
-        </div>
-        <div class="category" data-item="Home & Kitchen">
-            <a href="home-kitchen.html">
+            </div>
+            <h2>Electronics</h2>
+        </a>
+    </div>
+    <div class="category" data-item="Home & Kitchen">
+        <a href="home-kitchen.html">
+            <div class="icon-container">
                 <i class="fas fa-couch"></i>
-                <h2>Home & Kitchen</h2>
-            </a>
-        </div>
-        <div class="category" data-item="Beauty">
-            <a href="beauty.html">
+            </div>
+            <h2>Home & Kitchen</h2>
+        </a>
+    </div>
+    <div class="category" data-item="Beauty">
+        <a href="beauty.html">
+            <div class="icon-container">
                 <i class="fas fa-heart"></i>
-                <h2>Beauty</h2>
-            </a>
-        </div>
-        <div class="category" data-item="Furniture">
-            <a href="furniture.html">
+            </div>
+            <h2>Beauty</h2>
+        </a>
+    </div>
+    <div class="category" data-item="Furniture">
+        <a href="furniture.html">
+            <div class="icon-container">
                 <i class="fas fa-bed"></i>
-                <h2>Furniture</h2>
-            </a>
-        </div>
-        <div class="category" data-item="Travel">
-            <a href="travel.html">
+            </div>
+            <h2>Furniture</h2>
+        </a>
+    </div>
+    <div class="category" data-item="Travel">
+        <a href="travel.html">
+            <div class="icon-container">
                 <i class="fas fa-plane"></i>
-                <h2>Travel</h2>
-            </a>
-        </div>
-        <div class="category" data-item="Grocery">
-            <a href="grocery.html">
+            </div>
+            <h2>Travel</h2>
+        </a>
+    </div>
+    <div class="category" data-item="Grocery">
+        <a href="grocery.html">
+            <div class="icon-container">
                 <i class="fas fa-shopping-basket"></i>
-                <h2>Grocery</h2>
-            </a>
-        </div>
-    </section>
+            </div>
+            <h2>Grocery</h2>
+        </a>
+    </div>
+    <div class="category" data-item="Sports">
+        <a href="sports.html">
+            <div class="icon-container">
+                <i class="fas fa-football-ball"></i>
+            </div>
+            <h2>Sports</h2>
+        </a>
+    </div>
+    <div class="category" data-item="Toys">
+        <a href="toys.html">
+            <div class="icon-container">
+                <i class="fas fa-puzzle-piece"></i>
+            </div>
+            <h2>Toys</h2>
+        </a>
+    </div>
+    <div class="category" data-item="Books">
+        <a href="books.html">
+            <div class="icon-container">
+                <i class="fas fa-book"></i>
+            </div>
+            <h2>Books</h2>
+        </a>
+    </div>
+</section>
+
+<!-- Popups for Top Offers and Trendings -->
+<div id="top-offers-popup" class="popup">
+    <span class="popup-close">&times;</span>
+    <h3>Top Offers</h3>
+    <div class="popup-content">
+        <p>Discover our best offers and deals just for you!</p>
+    </div>
+</div>
+
+<div id="trendings-popup" class="popup">
+    <span class="popup-close">&times;</span>
+    <h3>Trendings</h3>
+    <div class="popup-content">
+        <p>Check out the hottest trending products right now!</p>
+    </div>
+</div>
+
+<!-- Popup Background -->
+<div id="popup-background" class="popup-background"></div>
 
     <section class="video-section">
         <h2>Watch Our Latest Ad</h2>
