@@ -701,13 +701,99 @@ p {
     }
 }
 
+/* Products Section */
+.products-section {
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.products-section h2 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.product {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+.product h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.product-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+    justify-items: center;
+}
+
+.product-image img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.product-image img:hover {
+    transform: scale(1.05);
+}
+
+.product-video {
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    aspect-ratio: 16/9;
+}
+
+.product-video iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.product-info {
+    text-align: center;
+}
+
+.product-info p {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+
+.add-to-cart-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: white;
+    background-color: #2874f0;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-button:hover {
+    background-color: #0056b3;
+}
+
+
     </style>
     
 </head>
 <body>
     <header>
         <div class="logo">
-            <a href="index.html"><img src="logo.png" alt="Innova Logo"></a>
+            <a href="/Login page/index.html"><img src="logo.png" alt="Innova Logo"></a>
         </div>
         <nav>
             <ul class="nav-links">
@@ -854,6 +940,63 @@ p {
 
 <!-- Popup Background -->
 <div id="popup-background" class="popup-background"></div>
+
+<!-- Products Section -->
+<section class="products-section">
+    <h2>Our Featured Products</h2>
+
+    <!-- Product 1 -->
+    <div class="product" data-id="1" data-name="Product 1" data-price="99.99">
+        <h3>Product 1</h3>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="path/to/product1.jpg" alt="Product 1 Image">
+            </div>
+            <div class="product-video">
+                <iframe src="https://www.youtube.com/embed/videoID1" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="product-info">
+                <p>Price: $99.99</p>
+                <a href="#" class="add-to-cart-button">Add to Cart</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product" data-id="2" data-name="Product 2" data-price="79.99">
+        <h3>Product 2</h3>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="path/to/product2.jpg" alt="Product 2 Image">
+            </div>
+            <div class="product-video">
+                <iframe src="https://www.youtube.com/embed/videoID2" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="product-info">
+                <p>Price: $79.99</p>
+                <a href="#" class="add-to-cart-button">Add to Cart</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product" data-id="3" data-name="Product 3" data-price="119.99">
+        <h3>Product 3</h3>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="path/to/product3.jpg" alt="Product 3 Image">
+            </div>
+            <div class="product-video">
+                <iframe src="https://www.youtube.com/embed/videoID3" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="product-info">
+                <p>Price: $119.99</p>
+                <a href="#" class="add-to-cart-button">Add to Cart</a>
+            </div>
+        </div>
+    </div>
+</section>
+
 
     <section class="video-section">
         <h2>Watch Our Latest Ad</h2>
