@@ -52,7 +52,10 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Contact
 For any inquiries, please contact me at itisaddy7@gmail.com.
 
-## Version 4.4
+## Version 5.0
+
+## Major Update-5.0-09/07/2024
+
 
 ## This updated README.md reflects the current state and features of the Innova e-commerce platform.
 
