@@ -169,79 +169,156 @@ header nav ul li a:hover {
     }
 }
     
-       /* Hero Section */
+     /* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+/* Hero Section */
 .hero {
     text-align: center;
-    padding: 80px 20px;
-    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    padding: 100px 20px;
+    background: linear-gradient(to right, #74ebd5, #acb6e5); /* Modern gradient */
     color: white;
-    border-radius: 15px;
-    margin-bottom: 40px;
+    height: 100vh; /* Full screen hero */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
     position: relative;
     overflow: hidden;
+    background-attachment: fixed; /* Parallax background */
+}
+
+/* Decorative Floating Circles */
+.hero::before, .hero::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 0;
 }
 
 .hero::before {
-    content: "";
+    width: 300px;
+    height: 300px;
+    top: -50px;
+    left: -50px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.hero::after {
+    width: 200px;
+    height: 200px;
+    bottom: -50px;
+    right: -50px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.hero-overlay {
     position: absolute;
     top: 0;
-    left: 50%;
-    width: 150%;
-    height: 150%;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateX(-50%);
-    border-radius: 50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay for better contrast */
     z-index: 0;
-    animation: pulse 5s infinite;
 }
 
-@keyframes pulse {
-    0% {
-        transform: translateX(-50%) scale(0.8);
-        opacity: 0.2;
-    }
-    50% {
-        transform: translateX(-50%) scale(1);
-        opacity: 0.1;
-    }
-    100% {
-        transform: translateX(-50%) scale(0.8);
-        opacity: 0.2;
-    }
-}
-
-.hero h1 {
-    font-size: 4em;
-    margin: 0;
-    font-weight: bold;
-    z-index: 1;
+.hero-content {
     position: relative;
+    z-index: 1;
+    max-width: 800px;
+    text-align: center;
 }
 
+/* Hero Heading */
+.hero h1 {
+    font-size: 3.5em;
+    margin: 0 0 20px 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Text depth effect */
+    animation: fadeInUp 1s ease-in-out;
+}
+
+/* Hero Paragraph */
 .hero p {
     font-size: 1.4em;
-    margin: 10px 0;
-    z-index: 1;
-    position: relative;
+    margin: 0 0 30px 0;
+    color: #e0e0e0;
+    line-height: 1.6;
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1.2s ease-in-out;
 }
 
+/* CTA Button with Glow Effect */
 .cta-button {
-    display: inline-block;
-    padding: 15px 30px;
+    padding: 15px 40px;
     font-size: 1.2em;
+    font-weight: 600;
     color: white;
-    background-color: #2874f0;
+    background-color: #ff7e5f;
     text-decoration: none;
-    border-radius: 30px;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 50px;
+    transition: background-color 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    display: inline-block;
 }
 
+/* Button Hover Effect */
 .cta-button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    background-color: #ff5143;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 81, 67, 0.7); /* Glowing effect */
 }
+
+/* Floating Animation for Hero Section */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.hero::before, .hero::after {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Keyframe Animation for Hero Text */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5em;
+    }
+
+    .hero p {
+        font-size: 1.1em;
+    }
+
+    .cta-button {
+        padding: 12px 30px;
+        font-size: 1em;
+    }
+}
+
 
 /* Categories Section */
 .categories {
@@ -804,7 +881,7 @@ p {
                     </ul>
                 </li>
                 <li><a href="shop.html" target="_blank">Shop</a></li>
-                <li><a href="#" target="_blank">Contact</a></li>
+                <li><a href="https://itisaddy.netlify.app/" target="_blank">Contact</a></li>
                 <li>
                     <a href="cart.html" id="cart" target="_blank">Cart</a>
                     <div class="cart-indicator" id="cart-count">0</div>
@@ -815,10 +892,13 @@ p {
     </header>
 
    <!-- Hero Section -->
-<section class="hero">
-    <h1>Welcome to Innova</h1>
-    <p>Your one-stop shop for all your needs!</p>
-    <a href="Topoffer.html" class="cta-button">Shop Now</a>
+   <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>Welcome to Innova</h1>
+        <p>Your one-stop shop for all your needs!</p>
+        <a href="aboutus.html" class="cta-button">Shop Now</a>
+    </div>
 </section>
 
 <!-- Categories Section -->
@@ -864,7 +944,7 @@ p {
         </a>
     </div>
     <div class="category" data-item="Beauty">
-        <a href="beauty.html">
+        <a href="shop.html">
             <div class="icon-container">
                 <i class="fas fa-heart"></i>
             </div>
@@ -872,7 +952,7 @@ p {
         </a>
     </div>
     <div class="category" data-item="Furniture">
-        <a href="furniture.html">
+        <a href="shop.html">
             <div class="icon-container">
                 <i class="fas fa-bed"></i>
             </div>

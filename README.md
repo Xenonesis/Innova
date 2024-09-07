@@ -1,5 +1,7 @@
 # Innova - E-commerce Platform
 
+## Developed by Aditya
+
 ## Overview
 
 Innova is a modern e-commerce platform designed to provide users with a seamless shopping experience. The platform showcases a variety of products across multiple categories, including electronics, home essentials, beauty products, and more. Featuring an intuitive interface and dynamic content, Innova aims to deliver a user-friendly shopping experience.
@@ -52,7 +54,11 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Contact
 For any inquiries, please contact me at itisaddy7@gmail.com.
 
-## Version 5.0
+## Version 5.2
+
+## Live link :- https://ecominnova.netlify.app/
+
+
 
 ## Major Update-5.0-09/07/2024
 
