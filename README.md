@@ -29,15 +29,15 @@ Innova is a modern e-commerce platform designed to provide users with a seamless
 
 ## To run this project locally:
 
-1. **Clone the Repository**:
-   git clone https://github.com/yourusername/innova.git
+1. Clone the Repository:
+   git clone https://github.com/Xenonesis/Innova
 
-2. **Navigate to the Project Directory**:
+2. Navigate to the Project Directory:
    cd innova
 
-3. **Open index.html in your preferred web browser**.
+3. Open index.html in your preferred web browser.
 
-   **File Structure**
+   File Structure
 index.html: The main HTML file containing the website structure.
 Topoffer.html: The HTML file for the top offers section.
 Cart.html: The HTML file for the shopping cart page.
