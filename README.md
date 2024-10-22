@@ -54,7 +54,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Contact
 For any inquiries, please contact me at itisaddy7@gmail.com.
 
-## Version 5.2
+## Version 5.3
 
 ## Live link :- https://ecominnova.netlify.app/
 
