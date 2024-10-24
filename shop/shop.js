@@ -54,6 +54,7 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
             cart.push({ name, price, quantity: 1 });
         }
         updateCart();
+
         const itemPopup = document.getElementById('item-popup');
         itemPopup.textContent = `${name} added to cart`;
         itemPopup.classList.add('show');
@@ -63,6 +64,7 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
     });
 });
 
+// Cart hover functionality with timeout
 const cartIcon = document.getElementById('cart-icon');
 const cartPopup = document.getElementById('cart-popup');
 
@@ -87,11 +89,10 @@ cartPopup.addEventListener('mouseleave', function() {
     }, 10000); // Hide the popup after 10 seconds
 });
 
-// Ensure cart does not block other events
+// Checkout button with Razorpay integration
 document.getElementById('checkout-button').addEventListener('click', function() {
     const totalAmount = parseFloat(document.getElementById('cart-total').textContent.replace('$', ''));
-    
-    // Ensure totalAmount is valid before proceeding to Razorpay
+
     if (totalAmount > 0) {
         const options = {
             "key": "YOUR_RAZORPAY_KEY_ID", 
@@ -118,9 +119,9 @@ document.getElementById('checkout-button').addEventListener('click', function() 
     }
 });
 
-// Popup logic and cookie consent
+// Popup and cookie consent logic
 window.onload = function() {
-    // Show popup and overlay after 3 seconds
+    // Show promotional popup after 3 seconds
     setTimeout(function() {
         document.getElementById('popup-overlay').style.display = 'block';
         document.getElementById('popup-box').style.display = 'block';
@@ -137,7 +138,7 @@ window.onload = function() {
         document.getElementById('cookie-consent').style.display = 'block';
     }, 3000);
 
-    // Handle cookie consent buttons
+    // Handle cookie consent choices
     document.getElementById('cookie-accept').onclick = function() {
         alert('You have accepted the cookies.');
         document.getElementById('cookie-consent').style.display = 'none';
