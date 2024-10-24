@@ -45,9 +45,9 @@ Innova is a modern e-commerce platform designed to provide users with a seamless
    
 
 2. **Navigate to the Project Directory**:
-   \`\`\`bash
+  
    cd innova
-   \`\`\`
+   
 
 3. **Open the Project**:
    Simply open the \`index.html\` file in your preferred web browser to start exploring the platform.
@@ -99,9 +99,10 @@ Email: itisaddy7@gmail.com
 
 ---
 
-## Version 5.5
+## Version 5.7
 
 - **Major Update**: Enhanced user experience with Firebase integration for authentication and personalized shopping.
+- **Updated UI/UX**: Improved UI and UX ,enhance user friendly.
 - **Live Demo**: Explore the platform at [Innova E-commerce](https://ecominnova.netlify.app/).
 
 ---

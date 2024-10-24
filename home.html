@@ -538,58 +538,243 @@ header nav ul li ul {
     
         /* Video Section */
         .video-section {
-            text-align: center;
-            padding: 50px 20px;
-            background-color: #333;
-            color: #fff;
-            animation: fadeIn 1s ease-in-out;
-        }
-    
-        .video-container {
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-    
+        text-align: center;
+        padding: 60px 20px;
+        background: linear-gradient(to right, #11cb90, #2575fc);
+        color: #ffffff;
+        border-radius: 15px;
+        margin-bottom: 40px;
+        position: relative;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .video-section h2 {
+        font-size: 2.8em;
+        margin-bottom: 20px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #ffffff;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+        letter-spacing: 1px;
+    }
+
+    .video-container {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-container iframe {
+        width: 100%;
+        height: 450px;
+        border-radius: 12px;
+        transition: transform 0.3s ease;
+    }
+
+    .video-container:hover iframe {
+        transform: scale(1.05);
+    }
+
+    .video-overlay {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .video-overlay::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.25);
+        z-index: 1;
+        transition: background 0.3s ease;
+    }
+
+    .video-container:hover .video-overlay::before {
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    .video-section p {
+        margin-top: 20px;
+        font-size: 1.2em;
+        color: #ffffff;
+    }
+
+    .video-section a {
+        color: #ffcc00;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+
+    .video-section a:hover {
+        color: #ffdd33;
+    }
+
+    @media (max-width: 768px) {
         .video-container iframe {
-            width: 100%;
-            height: 340px;
-            border: none;
+            height: 300px;
         }
-    
-        /* Client Section */
-        .client-section {
-            padding: 50px 20px;
-            text-align: center;
-            background-color: #f7ede2;
-            animation: fadeInUp 1s ease-in-out;
+
+        .video-section h2 {
+            font-size: 2em;
         }
-    
-        .clients {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+
+        .video-section p {
+            font-size: 1em;
         }
+    }
     
+    .client-section, .testimonials-section {
+        padding: 60px 20px;
+        text-align: center;
+        background-color: #f9f9f9;
+        border-radius: 15px;
+        margin-bottom: 50px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .client-section h2, .testimonials-section h2 {
+        font-size: 2.8em;
+        margin-bottom: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #333;
+    }
+
+    .client-section p, .testimonials-section p {
+        font-size: 1.2em;
+        color: #555;
+        margin-bottom: 30px;
+    }
+
+    .clients {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .client-body {
+        background: white;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 120px;
+        height: 120px;
+    }
+
+    .client-body:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    }
+
+    .client-body img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+    }
+
+    .client-body:hover img {
+        transform: scale(1.05);
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .testimonial {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        max-width: 350px;
+        text-align: left;
+        position: relative;
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .testimonial:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .testimonial p {
+        font-size: 1.1em;
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    .testimonial-client {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .testimonial-client img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .testimonial-client h3 {
+        font-size: 1.2em;
+        color: #333;
+        margin: 0;
+    }
+
+    @media (max-width: 768px) {
         .client-body {
             width: 100px;
             height: 100px;
-            transition: transform 0.3s ease;
         }
-    
-        .client-body img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+
+        .testimonial {
+            max-width: 300px;
         }
-    
-        .client-body:hover {
-            transform: scale(1.1);
+    }
+
+    @media (max-width: 480px) {
+        .clients {
+            gap: 15px;
         }
-    
+
+        .client-body {
+            width: 80px;
+            height: 80px;
+        }
+
+        .testimonials {
+            flex-direction: column;
+        }
+
+        .testimonial {
+            max-width: 100%;
+        }
+
+        .client-section h2, .testimonials-section h2 {
+            font-size: 2em;
+        }
+
+        .client-section p, .testimonials-section p {
+            font-size: 1em;
+        }
+    }
         /* Cart Section */
         .cart-section {
             padding: 50px 20px;
@@ -597,28 +782,115 @@ header nav ul li ul {
             text-align: center;
         }
     
-        /* Footer */
-        footer {
-            background-color: #333;
-            padding: 20px;
-            color: #fff;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            animation: fadeIn 1s ease-in-out;
-        }
-    
-        footer::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(to right, #e74c3c, #f39c12);
-            animation: gradientMove 3s linear infinite;
-        }
-    
+          footer {
+        background: #2d2d2d;
+        color: #ffffff;
+        padding: 60px 20px;
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
+
+    .footer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .footer-logo img {
+        height: 60px;
+        margin-bottom: 30px;
+        transition: transform 0.3s ease;
+    }
+
+    .footer-logo img:hover {
+        transform: scale(1.1);
+    }
+
+    .footer-columns {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+        max-width: 1200px;
+        width: 100%;
+    }
+
+    .footer-column {
+        flex: 1;
+        min-width: 220px;
+        margin-bottom: 20px;
+    }
+
+    .footer-column h3 {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        color: #ff8c00;
+    }
+
+    .footer-column ul {
+        list-style: none;
+        padding: 0;
+        line-height: 1.8;
+    }
+
+    .footer-column ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-column ul li a {
+        color: #ffffff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer-column ul li a:hover {
+        color: #ff8c00;
+    }
+
+    .social-media-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .social-icon {
+        display: inline-block;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .social-icon img {
+        width: 24px;
+        height: 24px;
+        transition: transform 0.3s ease;
+    }
+
+    .social-icon:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+    }
+
+    .social-icon img:hover {
+        transform: scale(1.2);
+    }
+
+    .footer-bottom {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        color: #999999;
+        font-size: 0.9em;
+    }
         /* Popup */
         .popup, .alert-popup {
             position: fixed;
@@ -846,90 +1118,99 @@ p {
     }
 }
 
-/* Products Section */
 .products-section {
-    padding: 30px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    margin-bottom: 50px;
-}
+        padding: 60px 20px;
+        background-color: #f9f9f9;
+        border-radius: 15px;
+        margin-bottom: 50px;
+        text-align: center;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
 
-.products-section h2 {
-    font-size: 2.5em;
-    text-align: center;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
+    .products-section h2 {
+        font-size: 2.8em;
+        margin-bottom: 20px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #333;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    }
 
-.product {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-    padding: 20px;
-}
+    .product {
+        background: white;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin-bottom: 40px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.product h3 {
-    font-size: 1.8em;
-    margin-bottom: 15px;
-    text-align: center;
-    font-weight: bold;
-}
+    .product:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
 
-.product-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    align-items: center;
-    justify-items: center;
-}
+    .product-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
 
-.product-image img {
-    width: 100%;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-}
+    .product-image img {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 12px;
+        transition: transform 0.3s ease;
+    }
 
-.product-image img:hover {
-    transform: scale(1.05);
-}
+    .product-image img:hover {
+        transform: scale(1.05);
+    }
 
-.product-video {
-    width: 100%;
-    height: 100%;
-    max-width: 400px;
-    aspect-ratio: 16/9;
-}
+    .product-info {
+        text-align: center;
+    }
 
-.product-video iframe {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-}
+    .product-info p.description {
+        font-size: 1.1em;
+        color: #666;
+        margin-bottom: 10px;
+    }
 
-.product-info {
-    text-align: center;
-}
+    .product-info p.price {
+        font-size: 1.5em;
+        color: #ff6347;
+        font-weight: 600;
+    }
 
-.product-info p {
-    font-size: 1.4em;
-    margin-bottom: 15px;
-}
+    .add-to-cart-button {
+        display: inline-block;
+        padding: 12px 25px;
+        font-size: 1.2em;
+        color: #ffffff;
+        background-color: #ff6347;
+        text-decoration: none;
+        border-radius: 50px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 4px 10px rgba(255, 99, 71, 0.4);
+    }
 
-.add-to-cart-button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 1.2em;
-    color: white;
-    background-color: #2874f0;
-    text-decoration: none;
-    border-radius: 30px;
-    transition: background-color 0.3s ease;
-}
+    .add-to-cart-button:hover {
+        background-color: #ff4500;
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(255, 69, 0, 0.4);
+    }
 
-.add-to-cart-button:hover {
-    background-color: #0056b3;
-}
+    @media (max-width: 768px) {
+        .product-image img {
+            max-width: 100%;
+        }
+
+        .add-to-cart-button {
+            width: 100%;
+        }
+    }
 
 
     </style>
@@ -1113,108 +1394,166 @@ p {
     <h2>Our Featured Products</h2>
 
     <!-- Product 1 -->
-    <div class="product" data-id="1" data-name="Product 1" data-price="99.99">
+    <div class="product" data-id="1" data-name="Sony Smart TV" data-price="500">
         <h3>Sony Smart TV</h3>
         <div class="product-content">
             <div class="product-image">
-                <img src="tv1.png" alt="Product 1 Image">
-            </div>
-            <div class="product-video">
-                <iframe src="https://www.youtube.com/embed/videoID1" frameborder="0" allowfullscreen></iframe>
+                <img src="tv1.png" alt="Sony Smart TV">
             </div>
             <div class="product-info">
-                <p>Price: $500</p>
-                <a href="shop.html" class="add-to-cart-button">View</a>
+                <p class="description">Experience stunning picture quality with the latest 4K HDR technology and smart connectivity in this Sony Smart TV.</p>
+                <p class="price">$500</p>
+                <a href="shop.html" class="add-to-cart-button">View Product</a>
             </div>
         </div>
     </div>
 
     <!-- Product 2 -->
-    <div class="product" data-id="2" data-name="Product 2" data-price="79.99">
+    <div class="product" data-id="2" data-name="Mixer & Grinder Set Combo" data-price="350">
         <h3>Mixer & Grinder Set Combo</h3>
         <div class="product-content">
             <div class="product-image">
-                <img src="Homepic2.jpg" alt="Product 2 Image">
-            </div>
-            <div class="product-video">
-                <iframe src="https://www.youtube.com/embed/videoID2" frameborder="0" allowfullscreen></iframe>
+                <img src="Homepic2.jpg" alt="Mixer & Grinder Set Combo">
             </div>
             <div class="product-info">
-                <p>Price: $350</p>
-                <a href="shop.html" class="add-to-cart-button">View</a>
+                <p class="description">Make cooking easier with this versatile mixer and grinder combo, perfect for blending, grinding, and mixing.</p>
+                <p class="price">$350</p>
+                <a href="shop.html" class="add-to-cart-button">View Product</a>
             </div>
         </div>
     </div>
 
     <!-- Product 3 -->
-    <div class="product" data-id="3" data-name="Product 3" data-price="119.99">
+    <div class="product" data-id="3" data-name="Modern Luxury Bed" data-price="900">
         <h3>Modern Luxury Bed</h3>
         <div class="product-content">
             <div class="product-image">
-                <img src="Bed2.jpg" alt="Product 3 Image">
-            </div>
-            <div class="product-video">
-                <iframe src="https://www.youtube.com/embed/videoID3" frameborder="0" allowfullscreen></iframe>
+                <img src="Bed2.jpg" alt="Modern Luxury Bed">
             </div>
             <div class="product-info">
-                <p>Price: $900</p>
-                <a href="#" class="add-to-cart-button">View</a>
+                <p class="description">Transform your bedroom with this elegant and comfortable luxury bed, designed for ultimate relaxation and style.</p>
+                <p class="price">$900</p>
+                <a href="#" class="add-to-cart-button">View Product</a>
             </div>
         </div>
     </div>
 </section>
 
-
     <section class="video-section">
         <h2>Watch Our Latest Ad</h2>
         <div class="video-container">
-            <iframe src="https://youtu.be/rN_zkpV52J0?si=y4vS6qQmlWAMo48J" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/aIdwPaSrbnM" frameborder="0" allowfullscreen></iframe>
         </div>
+        <p>If the video does not load, <a href="https://www.youtube.com/watch?v=aIdwPaSrbnM" target="_blank">click here to watch it on YouTube</a>.</p>
     </section>
 
     <section class="client-section">
-        <h2>Our Clients</h2>
+        <h2>Our Trusted Clients</h2>
+        <p>We are proud to collaborate with industry-leading brands.</p>
         <div class="clients">
             <div class="client-body">
-                <img src="https://img.icons8.com/color/100/000000/google-logo.png" alt="Client 1">
+                <img src="https://img.icons8.com/color/100/000000/google-logo.png" alt="Google">
             </div>
             <div class="client-body">
-                <img src="https://img.icons8.com/color/100/000000/linkedin.png" alt="Client 2">
+                <img src="https://img.icons8.com/color/100/000000/linkedin.png" alt="LinkedIn">
             </div>
             <div class="client-body">
-                <img src="https://img.icons8.com/color/100/000000/amazon.png" alt="Client 3">
+                <img src="https://img.icons8.com/color/100/000000/amazon.png" alt="Amazon">
             </div>
             <div class="client-body">
-                <img src="https://img.icons8.com/color/48/000000/netflix.png" alt="Client 4">
+                <img src="https://img.icons8.com/color/100/000000/netflix.png" alt="Netflix">
             </div>
             <div class="client-body">
-                <img src="https://img.icons8.com/color/100/000000/ibm.png" alt="Client 5">
+                <img src="https://img.icons8.com/color/100/000000/ibm.png" alt="IBM">
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonials-section">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p>"Innova’s platform has been a game-changer for our e-commerce operations. The AI-driven recommendations significantly improved our conversion rates!"</p>
+                <div class="testimonial-client">
+                    <img src="https://img.icons8.com/color/100/000000/amazon.png" alt="Amazon">
+                    <h3>John Doe, Amazon</h3>
+                </div>
+            </div>
+    
+            <div class="testimonial">
+                <p>"We are extremely happy with the seamless integration Innova offers. Their support and performance have exceeded our expectations."</p>
+                <div class="testimonial-client">
+                    <img src="https://img.icons8.com/color/100/000000/google-logo.png" alt="Google">
+                    <h3>Jane Smith, Google</h3>
+                </div>
+            </div>
+    
+            <div class="testimonial">
+                <p>"Innova has revolutionized our online shopping experience. Their user interface and technology have allowed us to grow faster than ever."</p>
+                <div class="testimonial-client">
+                    <img src="https://img.icons8.com/color/100/000000/netflix.png" alt="Netflix">
+                    <h3>Michael Brown, Netflix</h3>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="cart-section" id="cart-items">
-        <!-- Cart items will be dynamically inserted here -->
-    </section>
+    <!-- <section class="cart-section" id="cart-items">
+        <Cart items will be dynamically inserted here -->
+    </section> 
 
     <footer>
         <div class="footer-container">
-            <img src="logo.png" alt="Innova Logo" class="footer-logo">
-            <div class="social-media-links">
-                <a href="https://www.linkedin.com/in/itisaddy/" target="_blank" class="social-icon">
-                    <img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn">
-                </a>
-                <a href="https://www.instagram.com/i__aditya7/?utm_source=ig_web_button_share_sheet" target="_blank" class="social-icon">
-                    <img src="https://img.icons8.com/ios/50/000000/instagram-new.png" alt="Instagram">
-                </a>
-                <a href="https://github.com/Xenonesis" target="_blank" class="social-icon">
-                    <img src="https://img.icons8.com/material-outlined/48/000000/github.png" alt="GitHub">
+            <div class="footer-logo">
+                <a href="index.html">
+                    <img src="logo.png" alt="Innova Logo" class="footer-logo-img">
                 </a>
             </div>
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="Login page/index.html">Login</a></li>
+                        <li><a href="https://itisaddy.netlify.app/">Contact Dev</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <div class="social-media-links">
+                        <a href="https://www.linkedin.com/in/itisaddy/" target="_blank" class="social-icon">
+                            <img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn">
+                        </a>
+                        <a href="https://www.instagram.com/i__aditya7/?utm_source=ig_web_button_share_sheet" target="_blank" class="social-icon">
+                            <img src="https://img.icons8.com/ios/50/000000/instagram-new.png" alt="Instagram">
+                        </a>
+                        <a href="https://github.com/Xenonesis" target="_blank" class="social-icon">
+                            <img src="https://img.icons8.com/material-outlined/48/000000/github.png" alt="GitHub">
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Email: support@innova.com</li>
+                        <li>Phone: +123 456 7890</li>
+                        <li>Location: Cybercity, Gurugram</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
             <p>© 2024 Innova. All Rights Reserved.</p>
         </div>
     </footer>
-    
     
 
     <!-- Discount Popup -->
