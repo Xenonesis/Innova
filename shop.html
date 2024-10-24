@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Innova</title>
     <link rel="stylesheet" href="shop/shop.css">
 </head>
+
 <body>
     <header>
         <ul>
@@ -25,9 +27,8 @@
             </li>
         </ul>
     </header>
-    
+
     <nav>
-        
         <div class="filters">
             <button onclick="filterProducts('all')">All Products</button>
             <button onclick="filterProducts('beauty')">Beauty</button>
@@ -47,6 +48,7 @@
             </select>
         </div>
     </nav>
+
     <div class="product-container" id="product-container">
         <!-- TVs & Appliances -->
         <section id="tvs-appliances" class="product-category">
@@ -70,7 +72,7 @@
             <h2>Top Electronics Offers</h2>
             <div class="product-card" data-price="200" data-name="Latest Gadget" data-category="electronics">
                 <img src="i15.jpg" alt="Electronics 1">
-                <p>Iphone 15 pro Max</p>
+                <p>Iphone 15 Pro Max</p>
                 <p class="price">Price: $200</p>
                 <button class="add-to-cart" data-price="200" data-name="Iphone 15 Pro Max">Add to Cart</button>
             </div>
@@ -162,7 +164,7 @@
             <h2>Beds & Mattresses Sale</h2>
             <div class="product-card" data-price="200" data-name="Comfortable Mattress" data-category="beds-mattresses">
                 <img src="bed1.jpg" alt="Bed 1">
-                <p>Royal Bed Combo </p>
+                <p>Royal Bed Combo</p>
                 <p class="price">Price: $1200</p>
                 <button class="add-to-cart" data-price="200" data-name="Royal Bed Combo">Add to Cart</button>
             </div>
@@ -174,22 +176,26 @@
             </div>
         </section>
     </div>
-    <div id="popup-overlay"></div>
-<div id="popup-box">
-    <button id="popup-close">&times;</button>
-    <h2>Special Offer!</h2>
-    <p>Get 20% off on your next purchase.</p>
-</div>
 
-<!-- Cookie Consent Popup -->
-<div id="cookie-consent">
-    <p>This website uses cookies to ensure you get the best experience. Please select your preference:</p>
-    <div id="cookie-buttons">
-        <button id="cookie-accept">Accept</button>
-        <button id="cookie-deny">Deny</button>
-        <button id="cookie-balanced">Balanced</button>
+    <!-- Popup Overlay for Special Offer -->
+    <div id="popup-overlay"></div>
+    <div id="popup-box">
+        <button id="popup-close">&times;</button>
+        <h2>Special Offer!</h2>
+        <p>Get 20% off on your next purchase.</p>
     </div>
-</div>
+
+    <!-- Cookie Consent Popup -->
+    <div id="cookie-consent">
+        <p>This website uses cookies to ensure you get the best experience. Please select your preference:</p>
+        <div id="cookie-buttons">
+            <button id="cookie-accept">Accept</button>
+            <button id="cookie-deny">Deny</button>
+            <button id="cookie-balanced">Balanced</button>
+        </div>
+    </div>
+
+    <!-- Cart Popup -->
     <div id="cart-popup">
         <h3>Shopping Cart</h3>
         <ul id="cart-items"></ul>
@@ -199,7 +205,7 @@
         </div>
         <button class="checkout-button" id="checkout-button">Checkout</button>
     </div>
-    <div id="item-popup"></div>
+
     <footer>
         <div class="footer-container">
             <img src="logo.png" alt="Innova Logo" class="footer-logo">
@@ -217,9 +223,9 @@
             <p>© 2024 Innova. All Rights Reserved.</p>
         </div>
     </footer>
-    
 
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="/shop/shop.js"></script>
 </body>
+
 </html>
