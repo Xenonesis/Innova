@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        * {
+       * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -154,6 +154,120 @@
             font-size: 1.4em;
             color: #555;
             text-align: center;
+        }
+
+        /* Project Details Section */
+        .project-details-section {
+            background: linear-gradient(135deg, #007bff, #6610f2);
+            padding: 60px 30px;
+            color: #fff;
+            border-radius: 10px;
+            margin-top: 50px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-details-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: #fff;
+        }
+
+        .project-details-section h2 .highlight {
+            color: #ffdd57;
+        }
+
+        .project-details-section p {
+            font-size: 1.2rem;
+            text-align: center;
+            color: #f8f9fa;
+            margin-bottom: 45px;
+        }
+
+        .details-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .details-column {
+            flex: 1;
+            min-width: 280px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .details-column:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-list, .tech-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .feature-list li, .tech-list li {
+            font-size: 1.1rem;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-list li i, .tech-list li i {
+            color: #ffdd57;
+            margin-right: 10px;
+        }
+
+        .developer-info {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .developer-info h3 {
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        .contact-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 20px;
+        }
+
+        .contact-list li {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #ffdd57;
+        }
+
+        .contact-list li i {
+            margin-right: 8px;
+        }
+
+        .contact-list a {
+            color: #ffdd57;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-list a:hover {
+            text-decoration: underline;
+        }
+
+        .project-details-intro {
+            margin-bottom: 40px;
+        }
+
+        .project-details-intro p {
+            font-size: 1.4rem;
+            font-weight: 300;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         /* Video Section */
@@ -312,6 +426,7 @@
                 margin: 20px 0;
             }
         }
+
     </style>
     <script>
         window.addEventListener('scroll', () => {
@@ -337,59 +452,148 @@
                 <ul>
                     <li><a href="home.html">Home</a></li>
                     <li><a href="aboutus.html">About Us</a></li>
-                    <li><a href="trendings.html"></a></li>
-                    <li><a href="">Contact</a></li>
+                    <li><a href="trendings.html">Trendings</a></li>
+                    <li><a href="https://www.linkedin.com/in/itisaddy/">Contact Dev</a></li>
+                    <li><a href="https://itisaddy.netlify.app/">Dev Portfolio</a></li>
                 </ul>
             </nav>
             <div class="hamburger-menu" onclick="toggleMenu()">&#9776;</div>
         </div>
     </header>
 
-    <section class="banner container">
+    <section class="banner container"> 
         <h1>Innova's Annual Tech Innovation Summit 2024</h1>
         <p>Join us on October 20th for our biggest event yet!</p>
         <a href="#" class="cta-button">Contact Us</a>
     </section>
-
+    
     <section class="values-section container">
         <h2>Our Values</h2>
-        <p>Innovation, Integrity, and Excellence</p>
+        <p>At Innova, we believe in providing exceptional customer service, innovative solutions, and a seamless shopping experience. Our core values—Innovation, Integrity, and Excellence—guide everything we do. We strive to push boundaries and create a platform where technology meets customer satisfaction.</p>
     </section>
-
+    
     <section class="culture-section container">
         <h2>Our Culture</h2>
-        <p>Empowering our team to achieve greatness</p>
+        <p>Our culture is centered around collaboration, creativity, and customer-centricity. We empower our team to think outside the box, develop innovative solutions, and work together to deliver the best e-commerce experience. We foster an inclusive work environment that nurtures individual talents and encourages professional growth.</p>
     </section>
-
+    
+    <section class="technology-section container">
+        <h2>Technology Behind Innova</h2>
+        <p>Innova is powered by cutting-edge technologies to provide a smooth and reliable shopping experience. From AI-driven product recommendations to a scalable infrastructure, we are committed to utilizing the best tools available to ensure our customers have a personalized and intuitive journey. We leverage:</p>
+        <ul>
+            <li><i class="fas fa-laptop-code"></i> HTML, CSS, JavaScript for a responsive, dynamic frontend.</li>
+            <li><i class="fas fa-database"></i> Firebase for user authentication and secure data storage.</li>
+            <li><i class="fas fa-brain"></i> AI/ML for personalized product recommendations and search optimization.</li>
+            <li><i class="fas fa-store"></i> LocalStorage for persisting cart items across sessions.</li>
+            <li><i class="fas fa-tools"></i> Various third-party integrations to ensure smooth payment processing and real-time updates.</li>
+        </ul>
+    </section>
+    
+    <section class="features-section container">
+        <h2>Key Features</h2>
+        <p>Our platform offers a variety of features designed to enhance the customer shopping experience. These include:</p>
+        <ul>
+            <li>User-friendly navigation and easy-to-browse categories.</li>
+            <li>Responsive design that works seamlessly on any device.</li>
+            <li>AI-powered product recommendations for personalized shopping.</li>
+            <li>Client showcase to build trust and credibility.</li>
+            <li>Persistent cart functionality that saves items even after page reloads.</li>
+            <li>Product filtering and sorting options for efficient browsing.</li>
+            <li>Interactive star rating system for customer reviews.</li>
+            <li>Social media integration to keep you connected with us.</li>
+        </ul>
+    </section>
+    
     <section class="sustainability-section container">
         <h2>Sustainability</h2>
-        <p>Committed to a greener future</p>
+        <p>At Innova, we are committed to reducing our environmental impact. We continually seek to implement greener technologies and practices across our platform. Our e-commerce operations emphasize eco-friendly solutions, whether it's through sustainable sourcing or using energy-efficient servers.</p>
     </section>
-
+    
     <section class="newsroom-section container">
         <h2>Newsroom</h2>
-        <p>Stay updated with our latest news</p>
+        <p>Stay updated with the latest from Innova. From upcoming sales to new feature releases, our newsroom is the go-to place for all updates. Check out our latest blog posts, press releases, and announcements to stay informed.</p>
     </section>
-
+    
+    <section class="developer-contact-section container">
+        <h2>Developer Contact</h2>
+        <p>If you have any inquiries or need support, feel free to reach out to the developer. We value your feedback and are here to assist you with any technical concerns:</p>
+        <ul>
+            <li><i class="fas fa-envelope"></i> Email: <a href="mailto:itisaddy7@gmail.com">itisaddy7@gmail.com</a></li>
+            <li><i class="fab fa-linkedin"></i> LinkedIn: <a href="https://www.linkedin.com/in/itisaddy/" target="_blank">Aditya on LinkedIn</a></li>
+            <li><i class="fas fa-globe"></i> Portfolio: <a href="https://itisaddy.netlify.app/" target="_blank">itisaddy.netlify.app</a></li>
+            <li><i class="fab fa-github"></i> GitHub: <a href="https://github.com/Xenonesis/Innova" target="_blank">GitHub Repository</a></li>
+        </ul>
+    </section>
+    
+    
     <section class="video-section container">
         <h2>Watch Our Latest Video</h2>
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/aIdwPaSrbnM" frameborder="0" allowfullscreen></iframe>
         </div>
+        <p>If the video does not load, <a href="https://www.youtube.com/watch?v=aIdwPaSrbnM" target="_blank">click here to watch it on YouTube</a>.</p>
     </section>
     
-
+    
+    <!-- Enhanced Project Details Section -->
+    <section class="project-details-section container">
+        <div class="project-details-intro">
+            <h2>About <span class="highlight">Innova</span></h2>
+            <p>Innova is a cutting-edge e-commerce platform designed to provide users with a seamless shopping experience. It features an intuitive interface and integrates advanced technologies, including AI and machine learning, to enhance personalization and user engagement.</p>
+        </div>
+        
+        <div class="details-grid">
+            <div class="details-column">
+                <h3>Key Features</h3>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> User-Friendly Navigation</li>
+                    <li><i class="fas fa-check-circle"></i> Responsive Design across devices</li>
+                    <li><i class="fas fa-check-circle"></i> AI/ML-driven product recommendations</li>
+                    <li><i class="fas fa-check-circle"></i> Integrated Video Section</li>
+                    <li><i class="fas fa-check-circle"></i> Client Showcase to build trust</li>
+                    <li><i class="fas fa-check-circle"></i> Persistent Cart Functionality</li>
+                    <li><i class="fas fa-check-circle"></i> Product Filtering and Sorting</li>
+                    <li><i class="fas fa-check-circle"></i> Item Popup Notifications</li>
+                    <li><i class="fas fa-check-circle"></i> Interactive Star Rating System</li>
+                    <li><i class="fas fa-check-circle"></i> Social Media Integration</li>
+                </ul>
+            </div>
+    
+            <div class="details-column">
+                <h3>Technologies Used</h3>
+                <ul class="tech-list">
+                    <li><i class="fas fa-laptop-code"></i> HTML, CSS, JavaScript for Frontend</li>
+                    <li><i class="fas fa-database"></i> Firebase (Authentication & Database)</li>
+                    <li><i class="fas fa-brain"></i> AI/ML Integration for personalized recommendations</li>
+                    <li><i class="fas fa-icons"></i> FontAwesome Icons</li>
+                    <li><i class="fas fa-store"></i> LocalStorage for Cart Persistence</li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="developer-info">
+            <h3>Developer Contacts</h3>
+            <p>For inquiries, reach out to the developer:</p>
+            <ul class="contact-list">
+                <li><i class="fas fa-envelope"></i> Email: <a href="mailto:itisaddy7@gmail.com">itisaddy7@gmail.com</a></li>
+                <li><i class="fab fa-linkedin"></i> LinkedIn: <a href="https://www.linkedin.com/in/itisaddy/" target="_blank">Aditya on LinkedIn</a></li>
+                <li><i class="fas fa-globe"></i> Portfolio: <a href="https://itisaddy.netlify.app/" target="_blank">itisaddy.netlify.app</a></li>
+                <li><i class="fab fa-github"></i> GitHub: <a href="https://github.com/Xenonesis/Innova" target="_blank">GitHub Repository</a></li>
+            </ul>
+        </div>
+    </section>
+    
     <footer>
         <div class="container footer-container">
             <div class="footer-column">
                 <h3>Company</h3>
                 <ul>
                     <li><a href="aboutus.html">About Us</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Press</a></li>
+                    <li><a href="Login page/index.html">Login</a></li>
+                    <li><a href="https://itisaddy.netlify.app/">Contact Dev</a></li>
                 </ul>
             </div>
-
+    
             <div class="footer-column">
                 <h3>Support</h3>
                 <ul>
@@ -398,25 +602,42 @@
                     <li><a href="#">Terms & Conditions</a></li>
                 </ul>
             </div>
-
+    
             <div class="footer-column">
                 <h3>Contact Us</h3>
                 <ul>
                     <li>Email: support@innova.com</li>
                     <li>Phone: +123 456 7890</li>
                 </ul>
-
+    
                 <div class="social-icons">
-                    <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/itisaddy/" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/Xenonesis/Innova" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+    
+            <!-- Embed the Google Map of Gurugram Cybercity -->
+            <div class="footer-column">
+                <h3>Our Location</h3>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3497.059230034686!2d77.08402941507406!3d28.493993982480763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d194fe0b4441d%3A0x7e6d5ea9a44f29db!2sCyber%20City%2C%20DLF%20Phase%202%2C%20Sector%2024%2C%20Gurugram%2C%20Haryana%20122002!5e0!3m2!1sen!2sin!4v1634314184349!5m2!1sen!2sin" 
+                        width="300" 
+                        height="200" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
             </div>
         </div>
-
+    
         <div class="footer-bottom">
             <p>&copy; 2024 Innova. All rights reserved.</p>
         </div>
     </footer>
+    
 </body>
 </html>

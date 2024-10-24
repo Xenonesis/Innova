@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innova Authentication</title>
+    <style>
+        /* Basic Styling for the body and form */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            animation: fadeInContainer 0.6s ease-in-out;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            text-align: left;
+            color: #555;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group input:focus {
+            border-color: #6e8efb;
+        }
+
+        .btn-field button {
+            width: 100%;
+            padding: 12px;
+            background-color: #6e8efb;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-field button:hover {
+            background-color: #5a78d6;
+        }
+
+        #result {
+            margin-top: 15px;
+            color: red;
+            display: none;
+            font-size: 14px;
+        }
+
+        .toggle-form {
+            text-align: center;
+            margin-top: 20px;
+            cursor: pointer;
+            color: #007bff;
+        }
+
+        .toggle-form:hover {
+            text-decoration: underline;
+        }
+
+        /* Modal popup styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 25px;
+            border-radius: 12px;
+            width: 80%;
+            max-width: 350px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 0.6s forwards;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            float: right;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        /* New modern loading animation */
+        .loading {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .loading .spinner {
+            width: 50px;
+            height: 50px;
+            border: 8px solid #ddd;
+            border-top-color: #6e8efb;
+            border-radius: 50%;
+            animation: rotate 1s infinite linear;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInContainer {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+
+    <!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+    <div class="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="container">
+        <h1 id="formTitle">Sign Up</h1>
+        <!-- Registration/Login Form -->
+        <form id="authForm">
+            <div class="input-group" id="nameInputGroup">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" placeholder="Enter your full name">
+            </div>
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <div class="btn-field">
+                <button type="submit" id="submitBtn">Register</button>
+            </div>
+        </form>
+        <p id="result"></p>
+        <div class="toggle-form" id="toggleForm">Already have an account? Log In</div>
+    </div>
+
+    <!-- Modal for success pop-up -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <p id="successMessage"></p>
+        </div>
+    </div>
+
+    <script>
+        // Firebase configuration object
+const firebaseConfig = {
+    apiKey: "AIzaSyD3X2hFgrFqjx2-jCMFy4btHEWhDovDoXs",
+    authDomain: "xbt-user-id.firebaseapp.com",
+    databaseURL: "https://xbt-user-id-default-rtdb.firebaseio.com",
+    projectId: "xbt-user-id",
+    storageBucket: "xbt-user-id.appspot.com",
+    messagingSenderId: "40162308101",
+    appId: "1:40162308101:web:c18b13a0d40b87587bac6c",
+    measurementId: "G-RSBML8T4WX"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+// Form state: 'signup' or 'login'
+let isSignUp = true;
+
+// Check for existing user cookie
+const userCookie = getCookie("username");
+if (userCookie) {
+    showModal("Welcome back, " + userCookie + "!");
+} else {
+    showModal("Welcome to Innova!");
+}
+
+// Toggle between Sign Up and Log In forms
+document.getElementById('toggleForm').addEventListener('click', function () {
+    isSignUp = !isSignUp;
+    if (isSignUp) {
+        document.getElementById('formTitle').innerText = "Sign Up";
+        document.getElementById('nameInputGroup').style.display = "block";
+        document.getElementById('submitBtn').innerText = "Register";
+        document.getElementById('toggleForm').innerText = "Already have an account? Log In";
+    } else {
+        document.getElementById('formTitle').innerText = "Log In";
+        document.getElementById('nameInputGroup').style.display = "none";
+        document.getElementById('submitBtn').innerText = "Log In";
+        document.getElementById('toggleForm').innerText = "Don't have an account? Sign Up";
+    }
+});
+
+// Form submission handler
+document.getElementById('authForm').addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent form from reloading the page
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    document.querySelector('.loading').style.display = 'flex'; // Show loading animation
+
+    if (isSignUp) {
+        const name = document.getElementById("name").value;
+        if (!name) {
+            showError("Please enter your name.");
+            document.querySelector('.loading').style.display = 'none'; // Hide loading animation
+            return;
+        }
+
+        // Sign up the user
+        auth.createUserWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+
+                // Store user details in Firestore
+                return db.collection("users").doc(user.uid).set({
+                    name: name,
+                    email: email,
+                    createdAt: new Date()
+                });
+            })
+            .then(() => {
+                // Set cookie for returning users
+                setCookie("username", name, 365);
+                showModal("Welcome, " + name + "!");
+            })
+            .catch(handleAuthErrors);
+    } else {
+        // Log in the user
+        auth.signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+
+                // Get user data from Firestore
+                db.collection("users").doc(user.uid).get()
+                    .then((doc) => {
+                        if (doc.exists) {
+                            const userName = doc.data().name;
+                            setCookie("username", userName, 365); // Set cookie
+                            showModal("Welcome back, " + userName + "!");
+                        }
+                    });
+
+                setTimeout(() => {
+                    window.location.href = "home.html";
+                }, 2000);
+            })
+            .catch(handleAuthErrors);
+    }
+});
+
+// Handle Firebase Auth Errors
+function handleAuthErrors(error) {
+    showError(error.message);
+    document.querySelector('.loading').style.display = 'none'; // Hide loading animation
+}
+
+// Function to show success modal
+function showModal(message) {
+    const modal = document.getElementById("successModal");
+    const successMessage = document.getElementById("successMessage");
+    successMessage.innerText = message;
+    modal.style.display = "block";
+    modal.style.opacity = 1;
+
+    document.querySelector('.loading').style.display = 'none'; // Hide loading animation
+
+    // Hide modal after 2 seconds
+    setTimeout(() => {
+        modal.style.opacity = 0;
+        setTimeout(() => modal.style.display = "none", 300);
+    }, 2000);
+}
+
+// Close the modal when 'X' is clicked
+document.getElementById("closeModal").addEventListener('click', function () {
+    const modal = document.getElementById("successModal");
+    modal.style.opacity = 0;
+    setTimeout(() => modal.style.display = "none", 300);
+});
+
+// Function to show error message
+function showError(message) {
+    const result = document.getElementById("result");
+    result.innerText = message;
+    result.style.display = 'block';
+}
+
+// Set Cookie
+function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+// Get Cookie
+function getCookie(cname) {
+    const name = cname + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+    </script>
+
+</body>
+</html>
