@@ -243,10 +243,10 @@ header nav ul li ul {
 /* Hero Section */
 .hero {
     text-align: center;
-    padding: 100px 20px;
+    padding: 120px 20px;
     background: linear-gradient(to right, #74ebd5, #acb6e5); /* Modern gradient */
     color: white;
-    height: 100vh; /* Full screen hero */
+    min-height: 100vh; /* Full screen hero */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -255,6 +255,7 @@ header nav ul li ul {
     position: relative;
     overflow: hidden;
     background-attachment: fixed; /* Parallax background */
+    animation: fadeIn 2s ease-in-out;
 }
 
 /* Decorative Floating Circles */
@@ -267,18 +268,18 @@ header nav ul li ul {
 }
 
 .hero::before {
-    width: 300px;
-    height: 300px;
-    top: -50px;
-    left: -50px;
+    width: 350px;
+    height: 350px;
+    top: -100px;
+    left: -100px;
     background: rgba(255, 255, 255, 0.2);
 }
 
 .hero::after {
-    width: 200px;
-    height: 200px;
-    bottom: -50px;
-    right: -50px;
+    width: 250px;
+    height: 250px;
+    bottom: -80px;
+    right: -80px;
     background: rgba(255, 255, 255, 0.2);
 }
 
@@ -297,49 +298,50 @@ header nav ul li ul {
     z-index: 1;
     max-width: 800px;
     text-align: center;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 /* Hero Heading */
 .hero h1 {
-    font-size: 3.5em;
+    font-size: 4.2em;
     margin: 0 0 20px 0;
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
     color: #ffffff;
     text-transform: uppercase;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Text depth effect */
+    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.4); /* Text depth effect */
     animation: fadeInUp 1s ease-in-out;
 }
 
 /* Hero Paragraph */
 .hero p {
-    font-size: 1.4em;
-    margin: 0 0 30px 0;
+    font-size: 1.8em;
+    margin: 0 0 40px 0;
     color: #e0e0e0;
-    line-height: 1.6;
+    line-height: 1.8;
     text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
     animation: fadeInUp 1.2s ease-in-out;
 }
 
 /* CTA Button with Glow Effect */
 .cta-button {
-    padding: 15px 40px;
-    font-size: 1.2em;
+    padding: 20px 60px;
+    font-size: 1.5em;
     font-weight: 600;
     color: white;
     background-color: #ff7e5f;
     text-decoration: none;
     border-radius: 50px;
     transition: background-color 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     display: inline-block;
 }
 
 /* Button Hover Effect */
 .cta-button:hover {
     background-color: #ff5143;
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 81, 67, 0.7); /* Glowing effect */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 81, 67, 0.7); /* Glowing effect */
 }
 
 /* Floating Animation for Hero Section */
@@ -348,7 +350,7 @@ header nav ul li ul {
         transform: translateY(0);
     }
     50% {
-        transform: translateY(-10px);
+        transform: translateY(-12px);
     }
     100% {
         transform: translateY(0);
@@ -363,7 +365,7 @@ header nav ul li ul {
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
@@ -372,13 +374,43 @@ header nav ul li ul {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .hero h1 {
-        font-size: 2.5em;
+        font-size: 3.5em;
     }
 
     .hero p {
+        font-size: 1.4em;
+    }
+
+    .cta-button {
+        font-size: 1.2em;
+        padding: 16px 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 3em;
+    }
+
+    .hero p {
+        font-size: 1.3em;
+    }
+
+    .cta-button {
+        padding: 14px 35px;
         font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2.6em;
+    }
+
+    .hero p {
+        font-size: 1.2em;
     }
 
     .cta-button {
@@ -387,6 +419,85 @@ header nav ul li ul {
     }
 }
 
+
+/* Scroll Down Indicator */
+.scroll-down {
+    margin-top: 50px;
+    display: inline-block;
+    color: white;
+    font-size: 1.5em;
+    text-decoration: none;
+    animation: bounce 2s infinite;
+    transition: color 0.3s ease;
+}
+
+.scroll-down i {
+    font-size: 2em;
+    margin-top: 10px;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 3.5em;
+    }
+
+    .hero p {
+        font-size: 1.3em;
+    }
+
+    .cta-button {
+        font-size: 1.2em;
+        padding: 15px 40px;
+    }
+
+    .scroll-down i {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.8em;
+    }
+
+    .hero p {
+        font-size: 1.2em;
+    }
+
+    .cta-button {
+        padding: 12px 35px;
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2.4em;
+    }
+
+    .hero p {
+        font-size: 1.1em;
+    }
+
+    .cta-button {
+        padding: 10px 30px;
+        font-size: 1em;
+    }
+
+    .scroll-down i {
+        font-size: 1.5em;
+    }
+}
 
 /* Categories Section */
 .categories {
@@ -1259,13 +1370,35 @@ p {
     
     
 
-   <!-- Hero Section -->
-   <section class="hero">
+  <!-- Hero Section -->
+<section class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <h1>Welcome to Innova</h1>
-        <p>Your one-stop shop for all your needs!</p>
-        <a href="aboutus.html" class="cta-button">Shop Now</a>
+        <p>Discover exclusive deals on top-rated products!</p>
+        <a href="shop.html" class="cta-button">Shop Now</a>
+
+        <div class="hero-features">
+            <div class="hero-feature">
+                <i class="fas fa-percent"></i>
+                <p>Up to 50% Off</p>
+                <small>On selected items</small>
+            </div>
+            <div class="hero-feature">
+                <i class="fas fa-truck"></i>
+                <p>Free Shipping</p>
+                <small>On orders over $100</small>
+            </div>
+            <div class="hero-feature">
+                <i class="fas fa-thumbs-up"></i>
+                <p>Top Rated Products</p>
+                <small>Trusted by customers</small>
+            </div>
+        </div>
+
+        <a href="#categories" class="scroll-down">
+            <i class="fas fa-chevron-down"></i> Explore Categories
+        </a>
     </div>
 </section>
 
