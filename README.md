@@ -30,7 +30,7 @@ Innova is a modern e-commerce platform designed to provide users with a seamless
 ## To run this project locally:
 
 1. **Clone the Repository**:
-   git clone https://github.com/yourusername/innova.git
+   git clone https://github.com/Xenonesis/Innova
 
 2. **Navigate to the Project Directory**:
    cd innova

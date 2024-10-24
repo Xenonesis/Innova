@@ -7,19 +7,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* General Reset */
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
-        body { 
-            background-color: #f7ede2;
-            color: #333;
-            line-height: 1.6;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-    
-        header {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body { 
+    background-color: #f7ede2;
+    color: #333;
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Header Styles */
+header {
     position: sticky;
     top: 0;
     width: 100%;
@@ -32,7 +35,7 @@
     z-index: 1000;
     transition: background-color 0.3s ease;
 }
-    
+
 header .logo img {
     height: 60px;
     transition: transform 0.3s ease;
@@ -41,7 +44,8 @@ header .logo img {
 header .logo img:hover {
     transform: scale(1.1);
 }
-    
+
+/* Navigation Styles */
 header nav ul {
     display: flex;
     list-style: none;
@@ -50,9 +54,8 @@ header nav ul {
 header nav ul li {
     position: relative;
 }
-    
+
 header nav ul li a {
-    font-family: 'Poppins', sans-serif;
     font-size: 16px;
     font-weight: 500;
     color: #333;
@@ -63,12 +66,14 @@ header nav ul li a {
     transition: color 0.3s ease;
 }
 
-    
 header nav ul li a:hover {
-    color: #f04e23; /* Accent color */
+    color: #f04e23;
+    background: linear-gradient(90deg, rgba(240,78,35,1) 0%, rgba(254,200,154,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* Hover Effect for Cart Indicator */
+/* Cart Indicator */
 .cart-indicator {
     background-color: #f04e23;
     color: #fff;
@@ -91,6 +96,7 @@ header nav ul li:hover {
     transition: background-color 0.3s ease;
 }
 
+/* Dropdown Menu */
 header nav ul li.dropdown:hover > ul {
     display: block;
 }
@@ -104,6 +110,7 @@ header nav ul li.dropdown ul {
     border-radius: 4px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
+
 header nav ul li ul {
     display: none;
     position: absolute;
@@ -130,6 +137,24 @@ header nav ul li ul li a:hover {
     color: #fff;
 }
 
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.mobile-menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    transition: 0.3s;
+}
+
 /* Animations */
 @keyframes fadeInDown {
     from {
@@ -146,12 +171,6 @@ header nav ul li ul {
     animation: fadeInDown 0.3s ease;
 }
 
-header nav ul li a:hover {
-    background: linear-gradient(90deg, rgba(240,78,35,1) 0%, rgba(254,200,154,1) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
     header {
@@ -159,18 +178,67 @@ header nav ul li a:hover {
         padding: 10px 20px;
     }
 
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
     header nav ul {
+        display: none;
         flex-direction: column;
         margin-top: 15px;
+        width: 100%;
+    }
+
+    header nav ul.active {
+        display: flex;
     }
 
     header nav ul li {
         margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    header nav ul li a {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .cart-indicator {
+        width: 18px;
+        height: 18px;
+        font-size: 12px;
     }
 }
-    
-     /* Import Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px;
+    }
+
+    header nav ul {
+        align-items: center;
+    }
+
+    header nav ul li a {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .cart-indicator {
+        width: 16px;
+        height: 16px;
+        font-size: 10px;
+    }
+
+    header .logo img {
+        height: 50px;
+    }
+}
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
 
 /* Hero Section */
 .hero {
@@ -872,9 +940,16 @@ p {
         <div class="logo">
             <a href="/Login page/index.html"><img src="logo.png" alt="Innova Logo"></a>
         </div>
+        <!-- Mobile menu toggle -->
+        <button class="mobile-menu-toggle" aria-label="Open navigation menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
         <nav>
             <ul class="nav-links">
-                <li class="dropdown"><a href="#">Login</a>
+                <li class="dropdown">
+                    <a href="#">Login</a>
                     <ul>
                         <li><a href="/login page/index.html">Sign in</a></li>
                         <li><a href="/Login page/create.html">Sign up</a></li>
@@ -890,6 +965,18 @@ p {
             </ul>
         </nav>
     </header>
+    
+    <script>
+        // JavaScript for toggling the mobile menu
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+    
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+    
+    
 
    <!-- Hero Section -->
    <section class="hero">
