@@ -46,48 +46,165 @@
             background-color: #1f1f1f;
         }
 
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+      /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        header .logo {
-            height: 50px;
-            transition: transform 0.3s ease;
-        }
+/* Navbar Container */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #1f1f1f;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
-        header .logo:hover {
-            transform: scale(1.1);
-        }
+/* Logo Styling */
+.logo {
+    height: 50px;
+    transition: transform 0.3s ease;
+}
 
-        header nav ul {
-            list-style: none;
-            display: flex;
-        }
+.logo:hover {
+    transform: scale(1.1);
+}
 
-        header nav ul li {
-            margin: 0 20px;
-        }
+/* Desktop Navigation Links */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
 
-        header nav ul li a {
-            color: #f5f5f5;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1em;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
+nav ul li {
+    position: relative;
+}
 
-        header nav ul li a:hover {
-            color: #e91e63;
-            transform: translateY(-5px);
-        }
+nav ul li a {
+    color: #f5f5f5;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: color 0.3s, background-color 0.3s;
+}
 
-        .hamburger-menu {
-            display: none;
-            font-size: 30px;
-            cursor: pointer;
-        }
+nav ul li a:hover {
+    color: #e91e63;
+    background-color: rgba(233, 30, 99, 0.1);
+}
+
+/* Dropdown Menu Styling */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #1f1f1f;
+    list-style: none;
+    padding: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 150px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.dropdown li {
+    width: 100%;
+}
+
+.dropdown li a {
+    display: block;
+    padding: 10px 20px;
+    color: #f5f5f5;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.dropdown li a:hover {
+    background-color: rgba(233, 30, 99, 0.1);
+}
+
+/* Show Dropdown on Hover */
+nav ul li:hover .dropdown {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hamburger Menu for Mobile */
+.hamburger-menu {
+    display: none;
+    font-size: 30px;
+    color: #f5f5f5;
+    cursor: pointer;
+}
+
+/* Mobile Navigation */
+/* Mobile Navigation */
+.mobile-nav {
+    display: none; /* Set to block with active class in mobile screens */
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100%;
+    background-color: rgba(31, 31, 31, 0.95);
+    padding-top: 60px;
+    transition: right 0.3s ease;
+    z-index: 999;
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-nav.active {
+    display: block;
+    right: 0;
+}
+
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.mobile-nav li {
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav a {
+    color: #c21233;
+    font-size: 1.2em;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.mobile-nav a:hover {
+    color: #0a0a0a;
+}
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+}
+
 
         /* Banner */
         .banner {
@@ -445,22 +562,69 @@
     </script>
 </head>
 <body>
+    <!-- HTML Structure -->
     <header>
-        <div class="nav-container container">
+        <div class="nav-container">
             <img src="logo.png" alt="Innova Logo" class="logo">
             <nav>
-                <ul>
+                <ul class="nav-links">
                     <li><a href="home.html">Home</a></li>
                     <li><a href="aboutus.html">About Us</a></li>
-                    <li><a href="trendings.html">Trendings</a></li>
+                    <li>
+                        <a href="#">More <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown">
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="portfolio.html">Portfolio</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </li>
                     <li><a href="https://www.linkedin.com/in/itisaddy/">Contact Dev</a></li>
                     <li><a href="https://itisaddy.netlify.app/">Dev Portfolio</a></li>
                 </ul>
             </nav>
             <div class="hamburger-menu" onclick="toggleMenu()">&#9776;</div>
         </div>
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="trendings.html">Trendings</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
     </header>
-
+    
+    <script>
+        // Toggle the mobile menu
+        function toggleMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            
+            // Toggle 'active' class on the mobile nav menu
+            mobileNav.classList.toggle('active');
+    
+            // Only add the click event listener when the menu is open
+            if (mobileNav.classList.contains('active')) {
+                document.addEventListener('click', closeMenuOnClickOutside);
+            }
+        }
+    
+        // Function to close the menu when clicking outside
+        function closeMenuOnClickOutside(event) {
+            const mobileNav = document.getElementById('mobileNav');
+            const hamburgerMenu = document.querySelector('.hamburger-menu');
+    
+            // Close the menu if clicked outside both the menu and the hamburger icon
+            if (!mobileNav.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+                mobileNav.classList.remove('active');
+                document.removeEventListener('click', closeMenuOnClickOutside); // Remove the listener after closing
+            }
+        }
+    </script>
+    
+    
+    
     <section class="banner container"> 
         <h1>Innova's Annual Tech Innovation Summit 2024</h1>
         <p>Join us on October 20th for our biggest event yet!</p>
@@ -638,6 +802,8 @@
             <p>&copy; 2024 Innova. All rights reserved.</p>
         </div>
     </footer>
+   
+    </script>
     
 </body>
 </html>
